@@ -1,12 +1,12 @@
 .Landing {
     text-align: center;
-    background-color: green;
+    /* background-color: green; */
   }
   
   .Title{
     padding-top: 40px;
     font-size: 40pt;
-    color: white;
+    /* color: white; */
   }
   
   .logo{
@@ -14,7 +14,7 @@
   }
   
   .slogan{
-    color: white;
+    /* color: white; */
   }
   
   .Logo{
