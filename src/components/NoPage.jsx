@@ -1,13 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function NoPage() {
   return (
     <div>
-        
-    <h1>Page Does Not Exist</h1>
-    
-</div>
-  )
+      <h1>Oops! You seem to be lost.</h1>
+      <h2>404. Page Does Not Exist</h2>
+    </div>
+  );
 }
 
-export default NoPage
+export default NoPage;

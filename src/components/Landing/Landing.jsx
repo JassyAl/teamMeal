@@ -1,9 +1,10 @@
 import React from "react";
-import "./Landing.css";
+import "./landing.css";
 import Button from "@mui/material/Button";
 import SignIn from "../SignOn/SignIn";
 import SignUp from "../SignOn/SignUp";
 import Recipes from "../Recipes/FindRecipes";
+import TAC from "../SignOn/TAC";
 
 const Landing = () => {
   return (
@@ -43,7 +44,10 @@ const Landing = () => {
       </Button>
       <br />
       <p className="Terms">
-        By Continuing you agree to the Terms and Conditions.
+        By Continuing you agree to the <Button variant="text" className="Terms"
+        component="a"
+        href="Terms"
+        startDecorator={<TAC/>}>Terms and Conditions</Button>.
       </p>
     </div>
   );
