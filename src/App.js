@@ -11,6 +11,9 @@ import Journal from "./components/Journal/Journal";
 import DailyProgress from "./components/Journal/DailyProgress";
 import NoPage from "./components/NoPage";
 import Profile from "./components/Dashboard/Profile";
+import Messages from "./components/Dashboard/Messages";
+import AccountInfo from "./components/Dashboard/AccountInfo";
+import TAC from "./components/SignOn/TAC";
 
 function App() {
   return (
@@ -25,9 +28,11 @@ function App() {
       <Route path="/AddJournal" element={<AddJournal/>}></Route>
       <Route path="/Journal" element={<Journal/>}></Route>
       <Route path="/DailyProgress" element={<DailyProgress/>}></Route>
-      <Route path="/NoPage" element={<NoPage/>}></Route>
       <Route path="/Profile" element={<Profile/>}></Route>
-
+      <Route path="/Messages" element={<Messages/>}></Route>
+      <Route path="/Account" element={<AccountInfo/>}></Route>
+      <Route path="/Terms" element={<TAC/>}></Route>
+      <Route path="*" element={<NoPage/>}/>
     </Routes>
     
     </div>

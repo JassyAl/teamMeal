@@ -15,6 +15,8 @@ import { Link } from 'react-router-dom';
 import "./appBar.css";
 import HomePage from '../Dashboard/HomePage';
 import Profile from '../Dashboard/Profile';
+import Messages from '../Dashboard/Messages';
+import AccountInfo from '../Dashboard/AccountInfo';
 
 
 // const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -73,8 +75,12 @@ function NavBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose} component="a"
+                    href="Profile"
+                    startDecorator={<Profile/>}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose} component="a"
+                    href="Account"
+                    startDecorator={<AccountInfo/>}>My account</MenuItem>
     </Menu>
   );
 
@@ -95,7 +101,9 @@ function NavBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem component="a"
+                    href="Messages"
+                    startDecorator={<Messages/>}>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -103,7 +111,7 @@ function NavBar() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem >
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -122,9 +130,6 @@ function NavBar() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        //   component="a"
-        //   href="Profile"
-        //   startDecorator={<Profile/>}
         >
           <AccountCircle />
         </IconButton>
