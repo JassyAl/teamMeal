@@ -1,5 +1,5 @@
 import "./App.css";
-import { Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Landing from "./components/Landing/Landing";
 import SignIn from "./components/SignOn/SignIn";
 import SignUp from "./components/SignOn/SignUp";
