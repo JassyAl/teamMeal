@@ -1,5 +1,5 @@
 import React from "react";
-import "./landing.css";
+import "./Landing.css";
 import Button from "@mui/material/Button";
 import SignIn from "../SignOn/SignIn";
 import SignUp from "../SignOn/SignUp";
