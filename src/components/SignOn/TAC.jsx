@@ -3,7 +3,7 @@ import "./signUp.css";
 
 function TAC() {
   return (
-    <div>
+    <div className="terms">
       <h2>TERMS AND CONDITIONS</h2>
       <h3>Welcome to our Daily Meal Companion App!</h3>
       <p>
@@ -89,7 +89,7 @@ function TAC() {
         <strong>
           By continuing, you acknowledge that you have read, understood, and
           agree to these Terms and Conditions.
-        </strong>
+        </strong> 
       </p>
     </div>
   );

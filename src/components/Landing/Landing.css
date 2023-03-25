@@ -9,7 +9,6 @@
   .Title{
     padding-top: 10px;
     font-size: 50pt;
-    /* color: rgb(7, 66, 36); */
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
@@ -24,7 +23,7 @@
   .slogan{
     color: rgb(7, 66, 36);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
   }
   
   .Logo{

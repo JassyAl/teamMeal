@@ -1,3 +1,22 @@
 li {
     list-style-type: none;
+    /* color: rgb(192, 230, 192); */
+}
+
+h2,h3, p{
+    color: white;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+li{
+    color: rgb(192, 230, 192);
+    /* margin-left: 150px;
+    margin-right: 150px; */
+}
+
+.terms{
+    padding-bottom: 30px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
