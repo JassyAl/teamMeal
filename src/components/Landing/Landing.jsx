@@ -10,8 +10,9 @@ const Landing = () => {
   return (
     <div className="Landing">
       <h1 className="Title">Daily Meal Companion</h1>
-      <img className="logo" src="/images/background.png" alt="Logo" />
       <h2 className="slogan">The only meal app you need</h2>
+      <img className="photo" src="/images/background.png" alt="Logo" />
+
       <div className="SignIn">
         <Button
           variant="contained"
