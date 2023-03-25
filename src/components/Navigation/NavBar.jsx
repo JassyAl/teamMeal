@@ -11,7 +11,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Home  from '@mui/icons-material/Home';
-// import { Link } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
 import "./appBar.css";
 import HomePage from '../Dashboard/HomePage';
 import Profile from '../Dashboard/Profile';
@@ -77,10 +77,10 @@ function NavBar() {
     >
       <MenuItem onClick={handleMenuClose} component="a"
                     href="Profile"
-                    startDecorator={<Profile/>}>Profile</MenuItem>
+                    startdecorator={<Profile/>}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose} component="a"
                     href="Account"
-                    startDecorator={<AccountInfo/>}>My account</MenuItem>
+                    startdecorator={<AccountInfo/>}>My account</MenuItem>
     </Menu>
   );
 
@@ -103,7 +103,7 @@ function NavBar() {
     >
       <MenuItem component="a"
                     href="Messages"
-                    startDecorator={<Messages/>}>
+                    startdecorator={<Messages/>}>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -140,7 +140,7 @@ function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar className="AppBar" position="static" enableColorOnDark>
+      <AppBar className="AppBar" elevation={0} position="static" sx={{ backgroundColor: '#1A1A1A' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -149,7 +149,7 @@ function NavBar() {
             aria-label="home icon"
             component="a"
             href="HomePage"
-            startDecorator={<HomePage/>}
+            startdecorator={<HomePage/>}
             sx={{ mr: 2 }}
           >
             <Home/>

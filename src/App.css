@@ -1,6 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
 .App {
   text-align: center;
   margin-top: 0;
+  background-color: #1A1A1A;
+  height: 100vh;
 }
 
+h1 {
+  color: rgb(192, 230, 192);
+}
 
