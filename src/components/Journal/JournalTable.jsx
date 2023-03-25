@@ -30,8 +30,18 @@ const handleClick = (entry) => {
 
 
   return (
+
+    // <Stack spacing={2}>
+    //     <Button variant="text" onClick={() => handleClick(entry)}
+    //               {entry.date}>2023-03-24</Button>
+    //             <Button variant="text" onClick={() => handleClick(entry)}
+    //               {entry.date}>2023-03-24</Button>
+    //                       <Button variant="text" onClick={() => handleClick(entry)}
+    //               {entry.date}>2023-03-24</Button>
+
+    // </Stack>
     <TableContainer component={Paper}>
-      <Table>
+      <Table sx={{ minWidth: 650 }} aria-label="journal table">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
@@ -42,7 +52,7 @@ const handleClick = (entry) => {
           {journalEntries.map((entry) => (
             <TableRow key={entry.id}>
               <TableCell>
-                <Button variant="outlined" onClick={() => handleClick(entry)}>
+                <Button variant="text" onClick={() => handleClick(entry)}>
                   {entry.date}
                 </Button>
               </TableCell>

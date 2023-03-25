@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import AddJournal from "./AddJournal";
 import JournalTable from "./JournalTable";
+import { Stack } from "@mui/material";
 
 function Journal() {
   // Dummy data for journal entries
@@ -17,30 +18,45 @@ function Journal() {
     <div>
       <h1>My Daily Journal</h1>
 
-      //button to add new entries
+      
        <div className="addEntry">
          <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           component="a"
+          style={{ borderRadius: 30 }}
           href="AddJournal"
           startdecorator={<AddJournal/>}
         >
           Add New Entry
         </Button>
       </div>
-
-      // table for journal entries
-      <JournalTable>
+      &nbsp;
+      <div>
+      <Stack spacing={3}>
+        <Button variant="outlined" style={{ borderRadius: 30 }}>2023-03-24</Button>
+        <Button variant="outlined" style={{ borderRadius: 30 }}>2023-03-25</Button>
+        <Button variant="outlined" style={{ borderRadius: 30 }}>2023-03-26</Button>
+        <Button variant="outlined" style={{ borderRadius: 30 }}>2023-03-27</Button>
+      </Stack>
+      </div>
+       {/* <Stack spacing={2}>
+     <Button variant="text" onClick={() => handleClick(entry)}
+                  {entry.date}>2023-03-24</Button>
+                <Button variant="text" onClick={() => handleClick(entry)}
+                  {entry.date}>2023-03-24</Button>
+                          <Button variant="text" onClick={() => handleClick(entry)}
+                  {entry.date}>2023-03-24</Button> */}
+      {/* <JournalTable>
         {entries.map((entry) => (
           <tr key={entry.id}>
             <td>
-              <Link to={`/journal/${entry.id}`}>{entry.date}</Link>
+              <Link to={`/JournalEntry/${entry.id}`}>{entry.date}</Link>
             </td>
             <td>{entry.content}</td>
           </tr>
         ))}
-      </JournalTable>
+      </JournalTable> */}
     </div>
   );
 }

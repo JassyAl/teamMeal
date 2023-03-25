@@ -17,6 +17,7 @@ const Landing = () => {
         <Button
           variant="contained"
           color="primary"
+          style={{ borderRadius: 30 }}
           component="a"
           href="SignIn"
           startdecorator={<SignIn />}
@@ -26,6 +27,7 @@ const Landing = () => {
         <Button
           variant="contained"
           color="secondary"
+          style={{ borderRadius: 30 }}
           component="a"
           href="FindRecipes"
           startdecorator={<Recipes />}
