@@ -9,12 +9,13 @@ const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
 
     return (
         <Paper component="form"
-               //onSubmit=
-               sx={{
-                   pl: 2,
-                   py: 3,
-                   boxShadow: 'none'
-               }}>
+            //onSubmit=
+            sx={{
+                bgcolor: '#1a1a1a',
+                pl: 2,
+                py: 3,
+                boxShadow: 'none'
+            }}>
 
             <input
                 className="search-bar"
@@ -22,7 +23,7 @@ const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)} />
 
-            <IconButton type="submit" sx={{ p: '10px', color: '#2196f3' }}>
+            <IconButton type="submit" sx={{ p: '10px', color: '#595959' }}>
                 <Search />
             </IconButton>
 
