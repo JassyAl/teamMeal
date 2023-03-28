@@ -1,6 +1,10 @@
 li {
     list-style-type: none;
-    /* color: rgb(192, 230, 192); */
+    color: rgb(192, 230, 192);
+}
+body {
+    height: 100%; 
+    background-color: #1A1A1A;
 }
 
 h2,h3, p{
@@ -9,11 +13,6 @@ h2,h3, p{
     margin-right: 150px;
 }
 
-li{
-    color: rgb(192, 230, 192);
-    /* margin-left: 150px;
-    margin-right: 150px; */
-}
 
 .terms{
     padding-bottom: 30px;

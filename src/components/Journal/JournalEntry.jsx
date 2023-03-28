@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import JournalTable from "./JournalTable";
 
 function JournalEntry() {
   const { id } = useParams();

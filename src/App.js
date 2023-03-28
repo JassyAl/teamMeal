@@ -6,7 +6,6 @@ import SignUp from "./components/SignOn/SignUp";
 import Recipes from "./components/Recipes/FindRecipes";
 import NavBar from "./components/Navigation/NavBar";
 import HomePage from "./components/Dashboard/HomePage";
-import AddJournal from "./components/Journal/AddJournal";
 import Journal from "./components/Journal/Journal";
 import DailyProgress from "./components/Journal/DailyProgress";
 import NoPage from "./components/NoPage";
@@ -29,7 +28,6 @@ function App() {
       <Route path="/SignUp" element={<SignUp/>}></Route>
       <Route path="/FindRecipes" element={<Recipes/>}></Route>
       <Route path="/HomePage" element={<HomePage/>}></Route>
-      <Route path="/AddJournal" element={<AddJournal/>}></Route>
       <Route path="/Journal" element={<Journal/>}></Route>
       <Route path="/JournalEntry" element={<JournalEntry/>}></Route>
       <Route path="/DailyProgress" element={<DailyProgress/>}></Route>
