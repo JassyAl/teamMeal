@@ -40,21 +40,23 @@ export default function RecipeCard({ recipe }) {
     };
 
     return (
-        <Card sx={{ maxWidth: 345, my: 5}}>
-            <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
-                title={recipe.recipe.label}
-                subheader={recipe.recipe.source}
-            />
+        <Card sx={{ maxWidth: 345, my: 5, bgcolor: '#404040' }}>
+            <Typography color='white'>
+                <CardHeader
+                    avatar={
+                        <Avatar sx={{ bgcolor: '#9500ae' }} aria-label="recipe">
+                            R
+                        </Avatar>
+                    }
+                    action={
+                        <IconButton aria-label="settings">
+                            <MoreVertIcon />
+                        </IconButton>
+                    }
+                    title={recipe.recipe.label}
+                //subheader={recipe.recipe.source}
+                />
+            </Typography>
             <CardMedia
                 component="img"
                 height="194"
@@ -62,14 +64,14 @@ export default function RecipeCard({ recipe }) {
                 alt={recipe.recipe.label}
             />
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="white">
                     {/*slice this??*/}
                     {recipe.recipe.ingredientLines}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: red[500] }} fontSize='large' />
+                    <FavoriteIcon color='secondary' fontSize='large' />
                 </IconButton>
                 {/*<IconButton aria-label="share">*/}
                 {/*    <ShareIcon />*/}
