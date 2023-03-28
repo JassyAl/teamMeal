@@ -14,16 +14,6 @@ const options = {
 };
 
 
-//uses hints and /parser
-// const BASE_URL = 'https://edamam-food-and-grocery-database.p.rapidapi.com';
-//
-// const options = {
-//     url: 'https://edamam-food-and-grocery-database.p.rapidapi.com',
-//     headers: {
-//         'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-//         'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-//     }
-// };
 
 
 export const fetchFromAPI = async (url) => {  // template string backtick
