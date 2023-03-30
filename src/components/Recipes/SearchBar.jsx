@@ -2,6 +2,7 @@ import React from 'react'
 import { Paper, IconButton } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import './recipes.css';
+import { Typography } from '@mui/material';
 
 
 const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
@@ -19,6 +20,9 @@ const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
                 py: 3,
                 boxShadow: 'none'
             }}>
+            <Typography>
+                <h1>Find Recipes</h1>
+            </Typography>
 
             <input
                 className="search-bar"
