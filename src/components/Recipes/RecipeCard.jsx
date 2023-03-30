@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -41,28 +42,30 @@ export default function RecipeCard({ recipe }) {
 
     return (
         <Card sx={{ maxWidth: 345, my: 5, bgcolor: '#404040' }}>
-            <Typography color='white'>
-                <CardHeader
-                    avatar={
-                        <Avatar sx={{ bgcolor: '#9500ae' }} aria-label="recipe">
-                            R
-                        </Avatar>
-                    }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
-                    title={recipe.recipe.label}
-                //subheader={recipe.recipe.source}
+            <Link to={`/FindRecipes/${recipe.recipe.label}`} style={{ textDecoration: 'none' }}>
+                <Typography color='white'>
+                    <CardHeader
+                        avatar={
+                            <Avatar sx={{ bgcolor: '#9500ae' }} aria-label="recipe">
+                                R
+                            </Avatar>
+                        }
+                        action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon />
+                            </IconButton>
+                        }
+                        title={recipe.recipe.label}
+                    //subheader={recipe.recipe.source}
+                    />
+                </Typography>
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={recipe.recipe.image}
+                    alt={recipe.recipe.label}
                 />
-            </Typography>
-            <CardMedia
-                component="img"
-                height="194"
-                image={recipe.recipe.image}
-                alt={recipe.recipe.label}
-            />
+            </Link>
             <CardContent>
                 <Typography variant="body2" color="white">
                     {/*slice this??*/}
