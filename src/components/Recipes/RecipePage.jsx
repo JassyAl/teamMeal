@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Typography } from '@mui/material';
-import RecipeList from './RecipeList';
+//import RecipeList from './RecipeList';
 import { Stack } from '@mui/material';
 import { Link } from '@mui/material';
 
