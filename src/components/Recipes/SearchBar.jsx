@@ -2,14 +2,17 @@ import React from 'react'
 import { Paper, IconButton } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import './recipes.css';
-import { Link } from 'react-router-dom';
 
 
 const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
 
+    const onhandleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <Paper component="form"
-            //onSubmit=
+            onSubmit={onhandleSubmit}
             sx={{
                 bgcolor: '#1a1a1a',
                 pl: 2,
