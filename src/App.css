@@ -10,6 +10,7 @@ body {
   background-color: #1A1A1A;
   height: 100vh;
   background-attachment: fixed;
+  overflow: auto;
 }
 
 h1 {
