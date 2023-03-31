@@ -5,7 +5,7 @@ body {
 
 
 .App {
-  text-align: center;
+  /* text-align: center; */
   margin-top: 0;
   background-color: #1A1A1A;
   height: 100vh;
@@ -16,5 +16,6 @@ body {
 h1 {
   color: lightgreen;
   padding-bottom: 30px;
+  text-align: center;
 }
 
