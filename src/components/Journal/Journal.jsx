@@ -1,77 +1,96 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import { Button, Grid, Popover, TextField, Paper } from "@mui/material";
 import { Stack } from "@mui/material";
-import { Popover, TextField, Grid, Paper } from "@material-ui/core";
+
+const paperStyle = {
+  padding: "30px",
+  background: "rgb(192, 230, 192)",
+  style: {
+    width: 600,
+    height: 200,
+  },
+};
+
+const inputStyle = {
+  backgroundColor: "lightgray",
+  color: "white",
+};
+
+const entries = [
+  {
+    id: 1,
+    date: "2023-03-27",
+    title: "Good",
+    content: "Today was a good day.",
+  },
+  {
+    id: 2,
+    date: "2023-03-26",
+    title: "Struggling",
+    content: "I had a lot of work to do today.",
+  },
+  {
+    id: 3,
+    date: "2023-03-25",
+    title: "Nice walk",
+    content: "I went for a walk in the park.",
+  },
+  { id: 4, date: "2023-03-24", title: "Blah", content: "Today was okay." },
+];
 
 function Journal() {
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [newEntry, setNewEntry] = useState({
+    date: "",
+    title: "",
+    content: "",
+  });
+  const [newEntryAnchorEl, setNewEntryAnchorEl] = useState(null);
+  const [entryAnchorEl, setEntryAnchorEl] = useState(null);
+  const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const [selectedEntry, setSelectedEntry] = useState("");
-  // Dummy data for journal entries
-  const entries = [
-    { id: 1, date: "2023-03-27", content: "Today was a good day." },
-    { id: 2, date: "2023-03-26", content: "I had a lot of work to do today." },
-    { id: 3, date: "2023-03-25", content: "I went for a walk in the park." },
-    { id: 4, date: "2023-03-24", content: "Today was okay." },
-  ];
-
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+  const handleNewEntryChange = (event) => {
+    const { name, value } = event.target;
+    setNewEntry((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleBodyChange = (event) => {
-    setBody(event.target.value);
+  const handleNewEntrySubmit = (event) => {
+    event.preventDefault();
+    const newId = entries[entries.length - 1].id + 1;
+    const newEntryWithId = { ...newEntry, id: newId };
+    entries.push(newEntryWithId);
+    setNewEntry({
+      date: new Date().toISOString().substr(0, 10),
+      title: "",
+      content: "",
+    });
+    setNewEntryAnchorEl(null);
   };
 
-  const handleEntrySelect = (entry) => {
+  const handleEntryClick = (event, entry) => {
+    setEntryAnchorEl(event.currentTarget);
     setSelectedEntry(entry);
   };
-  const handleClick = (event) => {
-    setPopoverOpen(true);
-    setAnchorEl(event.currentTarget);
-  };
 
-  const handleClose = () => {
-    setPopoverOpen(false);
-    setAnchorEl(null);
-  };
-
-  const paperStyle = {
-    padding: "30px",
-    background: "rgb(192, 230, 192)",
-              style: {
-              width: 600,
-              height: 200,
-              }
-  };
-
-  const inputStyle = {
-    backgroundColor: "lightgray",
-    color: "white",
+  const handleEntryClose = () => {
+    setEntryAnchorEl(null);
+    setSelectedEntry(null);
   };
 
   return (
-    <div>
+    <div className="journals">
       <h1>My Daily Journal</h1>
-      <div className="addEntry">
-        <Button
-          onClick={handleClick}
-          variant="contained"
-          color="secondary"
-          style={{ borderRadius: 30 }}
-        >
-          Add New Entry
-        </Button>
-      </div>
-      &nbsp;
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ borderRadius: 30 }}
+        onClick={(event) => setNewEntryAnchorEl(event.currentTarget)}
+      >
+        Add New Entry
+      </Button>
       <Popover
-        open={popoverOpen}
-        anchorEl={anchorEl}
-        onClose={handleClose}
+        open={Boolean(newEntryAnchorEl)}
+        anchorEl={newEntryAnchorEl}
+        onClose={() => setNewEntryAnchorEl(null)}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "center",
@@ -82,77 +101,99 @@ function Journal() {
         }}
       >
         <Paper elevation={3} style={paperStyle}>
-          <form>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
+          <form onSubmit={handleNewEntrySubmit}>
+            <Grid container spacing={3}>
+              <Grid item xs={8}>
                 <TextField
-                  label="Journal Title"
+                  name="title"
+                  label="Title"
                   variant="outlined"
                   fullWidth
                   required
-                  value={title}
-                  onChange={handleTitleChange}
                   style={inputStyle}
+                  value={newEntry.title}
+                  onChange={handleNewEntryChange}
                 />
               </Grid>
-              &nbsp;
+              <Grid item xs={4}>
+                <TextField
+                  name="date"
+                  label="Date"
+                  variant="outlined"
+                  fullWidth
+                  style={inputStyle}
+                  value={newEntry.date}
+                  onChange={handleNewEntryChange}
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
+                  name="content"
                   label="Express Yourself"
                   variant="outlined"
                   fullWidth
                   multiline
                   required
-                  value={body}
-                  onChange={handleBodyChange}
                   style={inputStyle}
+                  value={newEntry.content}
+                  onChange={handleNewEntryChange}
                 />
-              </Grid>
-              <Grid item xs={6}>
-                <Button
-                  variant="text"
-                  color="primary"
-                  component="a"
-                  style={{ borderRadius: 20 }}
-                  component="a"
-                  href="Journal"
-                  startdecorator={<Journal />}
-                >
-                  Cancel
-                </Button>
               </Grid>
               <Grid item xs={6}>
                 <Button
                   variant="contained"
                   color="primary"
-                  type="submit"
-                  style={{ borderRadius: 30 }}
                   fullWidth
+                  style={{ borderRadius: 30 }}
+                  type="submit"
                 >
-                  Submit
+                  Add Entry
                 </Button>
               </Grid>
             </Grid>
           </form>
         </Paper>
       </Popover>
+
       <div>
-        <Stack
-          spacing={3}
-          onChange={(event, value) => handleEntrySelect(value)}
-        >
-          {entries.map((entry) => (
-            <Button
-              key={entry.id}
-              value={entry}
-              variant="outlined"
-              style={{ borderRadius: 20 }}
-            >
-              {entry.date}
-            </Button>
-          ))}
-        </Stack>
+        <br />
+        <h3>Previous Entries</h3>
       </div>
+      <br />
+      <Stack spacing={3}>
+        {entries.map((entry) => (
+          <div key={entry.id}>
+            <Button
+              onClick={(event) => handleEntryClick(event, entry)}
+              variant="outlined"
+              fullWidth
+              style={{ borderRadius: 50 }}
+            >
+              {"Date: "} {entry.date}
+              <br />
+              {"Title: "}
+              {entry.title}
+            </Button>
+            <Popover
+              open={selectedEntry && selectedEntry.id === entry.id}
+              anchorEl={entryAnchorEl}
+              onClose={handleEntryClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <Paper elevation={3} style={paperStyle}>
+                <div>{entry.content}</div>
+              </Paper>
+            </Popover>
+          </div>
+        ))}
+      </Stack>
     </div>
   );
 }
