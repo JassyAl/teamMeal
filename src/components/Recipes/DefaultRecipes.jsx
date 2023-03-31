@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material';
 import RecipeCard from "./RecipeCard";
-//import API and style boxes to hold recipe card
+
 
 const DefaultRecipes = ({ recipes }) => {
     return (
