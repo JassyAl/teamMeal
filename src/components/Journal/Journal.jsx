@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Grid, Popover, TextField, Paper } from "@mui/material";
 import { Stack } from "@mui/material";
+import "./Journal.css";
 
 const paperStyle = {
   padding: "30px",
@@ -47,6 +48,7 @@ function Journal() {
   const [newEntryAnchorEl, setNewEntryAnchorEl] = useState(null);
   const [entryAnchorEl, setEntryAnchorEl] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleNewEntryChange = (event) => {
     const { name, value } = event.target;
@@ -75,6 +77,10 @@ function Journal() {
     setEntryAnchorEl(null);
     setSelectedEntry(null);
   };
+
+  const filteredEntries = entries.filter((entry) =>
+    entry.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="journals">
@@ -155,13 +161,21 @@ function Journal() {
         </Paper>
       </Popover>
 
-      <div>
+      <div className="search">
         <br />
-        <h3>Previous Entries</h3>
-      </div>
+      
+      <Grid  item xs={4}>
+        <TextField
+          label="Search Entries by Title"
+          variant="outlined"
+          style={inputStyle}
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+        />
+      </Grid></div>
       <br />
-      <Stack spacing={3}>
-        {entries.map((entry) => (
+      <Stack className="stack" spacing={3}>
+        {filteredEntries.map((entry) => (
           <div key={entry.id}>
             <Button
               onClick={(event) => handleEntryClick(event, entry)}
