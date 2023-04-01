@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Button, Grid, Popover, TextField, Paper } from "@mui/material";
+import { Button, Grid, Modal, TextField, Paper } from "@mui/material";
 import { Stack } from "@mui/material";
 import "./Journal.css";
 
 const paperStyle = {
   padding: "30px",
   background: "rgb(192, 230, 192)",
-  style: {
-    width: 600,
-    height: 200,
-  },
+  maxWidth: "50vw", 
+  maxHeight: "80vh",
 };
 
 const inputStyle = {
@@ -77,6 +75,7 @@ function Journal() {
     setEntryAnchorEl(null);
     setSelectedEntry(null);
   };
+  
 
   const filteredEntries = entries.filter((entry) =>
     entry.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -93,7 +92,8 @@ function Journal() {
       >
         Add New Entry
       </Button>
-      <Popover
+      <Modal
+        className="modal"
         open={Boolean(newEntryAnchorEl)}
         anchorEl={newEntryAnchorEl}
         onClose={() => setNewEntryAnchorEl(null)}
@@ -159,7 +159,7 @@ function Journal() {
             </Grid>
           </form>
         </Paper>
-      </Popover>
+      </Modal>
 
       <div className="search">
         <br />
@@ -179,16 +179,17 @@ function Journal() {
           <div key={entry.id}>
             <Button
               onClick={(event) => handleEntryClick(event, entry)}
-              variant="outlined"
+              variant="contained"
               fullWidth
-              style={{ borderRadius: 50 }}
+              style={{ backgroundColor: '#333333', borderRadius: 50 }}
             >
               {"Date: "} {entry.date}
               <br />
               {"Title: "}
               {entry.title}
             </Button>
-            <Popover
+            <Modal
+              className="modal"
               open={selectedEntry && selectedEntry.id === entry.id}
               anchorEl={entryAnchorEl}
               onClose={handleEntryClose}
@@ -204,7 +205,7 @@ function Journal() {
               <Paper elevation={3} style={paperStyle}>
                 <div>{entry.content}</div>
               </Paper>
-            </Popover>
+            </Modal>
           </div>
         ))}
       </Stack>
