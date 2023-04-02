@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Typography } from '@mui/material';
-//import RecipeList from './RecipeList';
+import RecipeList from './RecipeList';
 import { Stack } from '@mui/material';
 import { Link } from '@mui/material';
 
@@ -19,7 +19,7 @@ const RecipePage = ({ recipes }) => {
                 <h3>Calories: {parseInt(recipe.recipe.calories)}</h3>
                 <h3>Total Time: {recipe.recipe.totalTime}</h3>
                 <Link href={recipe.recipe.url} underline="hover" target="_blank" rel="noreferrer">Find Recipe Here</Link>
-                {/* <RecipeList /> */}
+                <RecipeList />
             </Typography>
         </Stack>
     )
