@@ -14,6 +14,8 @@ import Profile from "./components/Dashboard/Profile";
 import Messages from "./components/Dashboard/Messages";
 import AccountInfo from "./components/Dashboard/AccountInfo";
 import TAC from "./components/SignOn/TAC";
+import Calendar from "./components/Calendar/Calendar";
+import SavedRecipes from "./components/Recipes/SavedRecipes";
 
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from 'react';
@@ -42,11 +44,12 @@ function App() {
           <Route index element={<FindRecipes selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} recipes={recipes} />}></Route>
           <Route path=":label" element={<RecipePage recipes={recipes} />}></Route>
         </Route>
-
+        <Route path="/SavedRecipes" element={<SavedRecipes/>}></Route>
         <Route path="/HomePage" element={<HomePage />}></Route>
         <Route path="/Journal" element={<Journal />}></Route>
         <Route path="/DailyProgress" element={<DailyProgress />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
+        <Route path="/Calendar" element={<Calendar/>}></Route>
         <Route path="/Messages" element={<Messages />}></Route>
         <Route path="/Account" element={<AccountInfo />}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
