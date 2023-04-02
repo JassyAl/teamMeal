@@ -34,20 +34,19 @@ function HomePage() {
 
   return (
     <div>
-      <h1>Home</h1>
-      <br />
       <div>
         <Typography
           style={{
             color: "white",
             textAlign: "left",
-            paddingLeft: 40,
-            paddingBottom: 40,
+            padding: 40,
+            fontWeight: "bolder",
           }}
           className="userName"
           variant="h4"
         >
-          Hello, {userName}
+          Hello, <br />
+          {userName}
         </Typography>
         <div className="overview">
           <Button
@@ -66,38 +65,50 @@ function HomePage() {
         </div>
 
         <Grid container spacing={2}>
-          <Grid style={{ paddingLeft: 10 }} item xs={12} md={6} lg={6}>
+          <Grid style={{ padding: 20 }} item xs={12} md={16} lg={32}>
             <Button
+              fullWidth
               component="a"
               href="DailyProgress"
               startdecorator={<DailyProgress />}
+              style={{
+                padding: "10px",
+                color: "white",
+                textAlign: "left",
+                maxHeight: "80vh",
+                width: "100%",
+              }}
             >
               <Card
                 style={{
-                  padding: "30px",
+                  padding: "20px",
                   background: "#333333",
-                  width: "600px",
                   color: "white",
                   textAlign: "left",
-                  maxHeight: "80vh",
+                  width: "100%",
+                  border: "2px solid lightgreen",
+                  boxSizing: "border-box",
                 }}
               >
                 <CardContent>
                   <Typography variant="h5">Daily Progress</Typography>
 
                   <Typography
-                    variant="h9"
+                    variant="subtitle2"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
                     Here you can see your daily tasks
                   </Typography>
                   <br />
                   <div className="break" />
+                  <Typography
+                    variant="h6"
+                    style={{ alignItems: "left", paddingBottom: 10 }}
+                  >
+                    {`${progress}%`}
+                  </Typography>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <div style={{ ...barStyle, backgroundColor: "gold" }}></div>
-                    <Typography variant="h6" style={{ marginLeft: 10 }}>
-                      {`${progress}%`}
-                    </Typography>
                   </div>
                 </CardContent>
               </Card>
@@ -108,9 +119,10 @@ function HomePage() {
           style={{
             color: "white",
             textAlign: "left",
-            paddingLeft: 40,
+            paddingLeft: 30,
             paddingBottom: 20,
-            paddingTop: 20,
+            paddingTop: 30,
+            fontWeight: "bolder",
           }}
           className="userName"
           variant="h4"
@@ -129,7 +141,7 @@ function HomePage() {
                   />
                   <br />
                   <Typography
-                    variant="h9"
+                    variant="subtitle2"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
                     {currEntries} Entries
@@ -140,7 +152,17 @@ function HomePage() {
                     <div
                       style={{ ...barStyle, backgroundColor: "royalblue" }}
                     ></div>
-                    <Typography variant="h6" style={{ marginLeft: 10 }}>
+                    <Typography
+                      variant="h6"
+                      style={{
+                        fontWeight: "bolder",
+                        textAlign: "center",
+                        width: 70,
+                        marginLeft: 60,
+                        backgroundColor: "royalblue",
+                        borderRadius: 30,
+                      }}
+                    >
                       {`${progress}%`}
                     </Typography>
                   </div>
@@ -158,7 +180,7 @@ function HomePage() {
                   />
                   <br />
                   <Typography
-                    variant="h9"
+                    variant="subtitle2"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
                     {notifications} New
@@ -169,7 +191,17 @@ function HomePage() {
                     <div
                       style={{ ...barStyle, backgroundColor: "orange" }}
                     ></div>
-                    <Typography variant="h6" style={{ marginLeft: 10 }}>
+                    <Typography
+                      variant="h6"
+                      style={{
+                        fontWeight: "bolder",
+                        textAlign: "center",
+                        width: 70,
+                        marginLeft: 60,
+                        backgroundColor: "orange",
+                        borderRadius: 30,
+                      }}
+                    >
                       {`${progress}%`}
                     </Typography>
                   </div>
@@ -191,7 +223,7 @@ function HomePage() {
                   />
                   <br />
                   <Typography
-                    variant="h9"
+                    variant="subtitle2"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
                     {savedMeals} Saved Meals
@@ -205,7 +237,17 @@ function HomePage() {
                         backgroundColor: "rgb(196, 19, 196)",
                       }}
                     ></div>
-                    <Typography variant="h6" style={{ marginLeft: 10 }}>
+                    <Typography
+                      variant="h6"
+                      style={{
+                        fontWeight: "bolder",
+                        textAlign: "center",
+                        width: 70,
+                        marginLeft: 60,
+                        backgroundColor: "rgb(196, 19, 196)",
+                        borderRadius: 30,
+                      }}
+                    >
                       {`${progress}%`}
                     </Typography>
                   </div>
@@ -219,11 +261,11 @@ function HomePage() {
                 <CardContent>
                   <CalendarMonthIcon
                     fontSize="large"
-                    style={{ color: "lightgreen" }}
+                    style={{ color: "green" }}
                   />
                   <br />
                   <Typography
-                    variant="h9"
+                    variant="subtitle2"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
                     {newTasks} New Tasks
@@ -232,9 +274,19 @@ function HomePage() {
                   <div className="break" />
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <div
-                      style={{ ...barStyle, backgroundColor: "lightgreen" }}
+                      style={{ ...barStyle, backgroundColor: "green" }}
                     ></div>
-                    <Typography variant="h6" style={{ marginLeft: 10 }}>
+                    <Typography
+                      variant="h6"
+                      style={{
+                        fontWeight: "bolder",
+                        textAlign: "center",
+                        width: 70,
+                        marginLeft: 60,
+                        backgroundColor: "green",
+                        borderRadius: 30,
+                      }}
+                    >
                       {`${progress}%`}
                     </Typography>
                   </div>
