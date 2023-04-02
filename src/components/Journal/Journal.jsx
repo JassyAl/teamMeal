@@ -39,7 +39,7 @@ const entries = [
 
 function Journal() {
   const [newEntry, setNewEntry] = useState({
-    date: "",
+    date: new Date().toISOString().substr(0, 10),
     title: "",
     content: "",
   });
