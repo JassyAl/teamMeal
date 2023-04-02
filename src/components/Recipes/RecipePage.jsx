@@ -4,9 +4,10 @@ import { List, ListItem, ListItemText, Typography } from '@mui/material';
 import { Link } from '@mui/material';
 import { Grid } from '@mui/material';
 import Container from '@mui/material/Container';
-import { Box } from '@mui/material';
+import { Stack, Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+
 import './recipes.css';
 
 
@@ -17,64 +18,57 @@ const RecipePage = ({ recipes }) => {
     const recipe = recipes.find(recipe => { return (recipe.recipe.label) == label });
 
     return (
-        <Container maxWidth="lx">
-            <Typography color='white' >
-                <h1>{recipe.recipe.label}</h1>
-                <Box sx={{ p: 4 }}>
-                    <Grid container direction="row"
-                        justifyContent="center"
-                        alignItems="stretch" spacing={4}
-                    >
-                        <Grid item xs={2} md={4}>
-                            <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-                        </Grid>
-                        <Grid item xs={2} md={5}>
-                            <h2>Source: {recipe.recipe.source}</h2>
-                            <h3>Calories: {parseInt(recipe.recipe.calories)}</h3>
-                            <h4>{recipe.recipe.dietLabels}</h4>
-                            <Button href={recipe.recipe.url} target="_blank" rel="noreferrer" variant="contained" color="secondary" >Complete Recipe Here</Button>
-                        </Grid>
+        <Container maxWidth="lg">
+            <Typography variant="h1">{recipe.recipe.label}</Typography>
+            <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={20}>
 
-
-                    </Grid>
+                <Box>
+                    <img src={recipe.recipe.image} alt={recipe.recipe.label} />
                 </Box>
 
-                <Box sx={{ p: 4 }}>
-                    <Grid container direction="row"
-                        justifyContent="center"
-                        alignItems="stretch" spacing={4}
-                    >
-                        <Grid item xs={3} md={5} sx={{ bgcolor: '#404040' }}>
-                            <h3>Ingredients: </h3>
-                            {<List sx={{ width: '100%' }}>
-                                {recipe.recipe.ingredientLines.map((value) => (
-                                    <ListItem
-                                        key={value}
-                                        disableGutters
-                                    >
-                                        <ListItemText primary={`${value}`} />
-                                    </ListItem>
-                                ))}
-                            </List>}
-                        </Grid>
-                        <Divider orientation="vertical" flexItem />
-                        <Grid item xs={2} md={4} sx={{ bgcolor: '#404040' }}>
-                            <h3>Nutrients: </h3>
-                            {<List sx={{ width: '100%' }}>
-                                {recipe.recipe.digest.map((value) => (
-                                    <ListItem
-                                        key={value}
-                                        disableGutters
-                                    >
-                                        <ListItemText primary={`${value.label} ${parseInt(value.total)}${value.unit}`} />
-                                    </ListItem>
-                                ))}
-                            </List>}
-                        </Grid>
-                    </Grid>
+                <Box>
+                    <Typography variant="h6" paragraph="true" >Source: {recipe.recipe.source} <br />
+                        Calories: {parseInt(recipe.recipe.calories)} <br />
+                        {recipe.recipe.dietLabels}
+                    </Typography>
+
+                    <Button href={recipe.recipe.url} target="_blank" rel="noreferrer" variant="contained" color="secondary" >Complete Recipe Here</Button>
                 </Box>
-            </Typography>
-        </Container>
+
+            </Stack>
+
+            <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ m: 4 }}>
+                <Grid sx={{ bgcolor: '#404040', p: 5 }}>
+                    <h3>Ingredients: </h3>
+                    {<List sx={{ width: '100%' }}>
+                        {recipe.recipe.ingredientLines.map((value) => (
+                            <ListItem
+                                key={value}
+                                disableGutters
+                            >
+                                <ListItemText primary={`${value}`} />
+                            </ListItem>
+                        ))}
+                    </List>}
+                </Grid>
+                <Divider orientation="vertical" flexItem />
+                <Grid sx={{ bgcolor: '#404040', p: 5 }}>
+                    <h3>Nutrients: </h3>
+                    {<List sx={{ width: '100%' }}>
+                        {recipe.recipe.digest.map((value) => (
+                            <ListItem
+                                key={value}
+                                disableGutters
+                            >
+                                <ListItemText primary={`${value.label} ${parseInt(value.total)}${value.unit}`} />
+                            </ListItem>
+                        ))}
+                    </List>}
+                </Grid>
+            </Stack>
+
+
+        </Container >
     )
 }
 
