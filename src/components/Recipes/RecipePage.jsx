@@ -38,7 +38,7 @@ const RecipePage = ({ recipes }) => {
             </Stack>
 
             <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ m: 4 }}>
-                <Grid sx={{ bgcolor: '#404040', p: 5 }}>
+                <Box sx={{ bgcolor: '#404040', p: 5 }}>
                     <h3>Ingredients: </h3>
                     {<List sx={{ width: '100%' }}>
                         {recipe.recipe.ingredientLines.map((value) => (
@@ -50,9 +50,9 @@ const RecipePage = ({ recipes }) => {
                             </ListItem>
                         ))}
                     </List>}
-                </Grid>
+                </Box>
                 <Divider orientation="vertical" flexItem />
-                <Grid sx={{ bgcolor: '#404040', p: 5 }}>
+                <Box sx={{ bgcolor: '#404040', p: 5 }}>
                     <h3>Nutrients: </h3>
                     {<List sx={{ width: '100%' }}>
                         {recipe.recipe.digest.map((value) => (
@@ -64,7 +64,7 @@ const RecipePage = ({ recipes }) => {
                             </ListItem>
                         ))}
                     </List>}
-                </Grid>
+                </Box>
             </Stack>
 
 
