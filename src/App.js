@@ -14,7 +14,6 @@ import Profile from "./components/Dashboard/Profile";
 import Messages from "./components/Dashboard/Messages";
 import AccountInfo from "./components/Dashboard/AccountInfo";
 import TAC from "./components/SignOn/TAC";
-import JournalEntry from "./components/Journal/JournalEntry";
 
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from 'react';
@@ -46,7 +45,6 @@ function App() {
 
         <Route path="/HomePage" element={<HomePage />}></Route>
         <Route path="/Journal" element={<Journal />}></Route>
-        <Route path="/JournalEntry" element={<JournalEntry />}></Route>
         <Route path="/DailyProgress" element={<DailyProgress />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/Messages" element={<Messages />}></Route>
