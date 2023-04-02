@@ -30,8 +30,6 @@ function HomePage() {
     width: "600px",
     color: "white",
     textAlign: "left",
-    // maxWidth: "50vw",
-    // maxHeight: "80vh",
   };
 
   return (
@@ -128,8 +126,9 @@ function HomePage() {
                   <AutoStoriesIcon
                     fontSize="large"
                     style={{ color: "royalblue" }}
-                  /><br/>
-                                    <Typography
+                  />
+                  <br />
+                  <Typography
                     variant="h9"
                     style={{ color: "lightgray", textAlign: "left" }}
                   >
@@ -156,13 +155,14 @@ function HomePage() {
                   <CircleNotificationsIcon
                     fontSize="large"
                     style={{ color: "orange" }}
-                  /><br/>
+                  />
+                  <br />
                   <Typography
-  variant="h9"
-  style={{ color: "lightgray", textAlign: "left" }}
->
-  {notifications} New
-</Typography>
+                    variant="h9"
+                    style={{ color: "lightgray", textAlign: "left" }}
+                  >
+                    {notifications} New
+                  </Typography>
                   <Typography variant="h5">Notifications</Typography>
                   <div className="break" />
                   <div style={{ display: "flex", alignItems: "center" }}>
@@ -178,19 +178,24 @@ function HomePage() {
             </Button>
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
-            <Button component="a" href="SavedRecipes" startdecorator={<SavedRecipes />}>
+            <Button
+              component="a"
+              href="SavedRecipes"
+              startdecorator={<SavedRecipes />}
+            >
               <Card style={paperStyle}>
                 <CardContent>
                   <RestaurantMenuIcon
                     fontSize="large"
                     style={{ color: "rgb(196, 19, 196)" }}
-                  /><br/>
+                  />
+                  <br />
                   <Typography
-  variant="h9"
-  style={{ color: "lightgray", textAlign: "left" }}
->
-  {savedMeals} Saved Meals
-</Typography>
+                    variant="h9"
+                    style={{ color: "lightgray", textAlign: "left" }}
+                  >
+                    {savedMeals} Saved Meals
+                  </Typography>
                   <Typography variant="h5">My Favorite Recipes</Typography>
                   <div className="break" />
                   <div style={{ display: "flex", alignItems: "center" }}>
@@ -215,13 +220,14 @@ function HomePage() {
                   <CalendarMonthIcon
                     fontSize="large"
                     style={{ color: "lightgreen" }}
-                  /><br/>
+                  />
+                  <br />
                   <Typography
-  variant="h9"
-  style={{ color: "lightgray", textAlign: "left" }}
->
-  {newTasks} New Tasks
-</Typography>
+                    variant="h9"
+                    style={{ color: "lightgray", textAlign: "left" }}
+                  >
+                    {newTasks} New Tasks
+                  </Typography>
                   <Typography variant="h5">My Calendar</Typography>
                   <div className="break" />
                   <div style={{ display: "flex", alignItems: "center" }}>
