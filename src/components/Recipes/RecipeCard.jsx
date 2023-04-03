@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 
 export default function RecipeCard({ recipe }) {
@@ -19,7 +19,7 @@ export default function RecipeCard({ recipe }) {
                     <CardHeader
                         avatar={
                             <Avatar sx={{ bgcolor: '#9500ae' }} aria-label="recipe">
-                                R
+                                <RestaurantIcon />
                             </Avatar>
                         }
                         title={recipe.recipe.label}
