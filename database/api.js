@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3001;
 
-const journal_model = require('./journal_entry_model')
+const journal_model = require('./journal_entry_model');
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', (req, res) => {
+app.get('/journals', (req, res) => {
   journal_model.getEntries()
   .then(response => {
     res.status(200).send(response);
@@ -23,17 +23,18 @@ app.get('/', (req, res) => {
   })
 })
 
-app.post('/entries', (req, res) => {
+app.post('/journals', (req, res) => {
   journal_model.createEntry(req.body)
   .then(response => {
     res.status(200).send(response);
   })
   .catch(error => {
+    console.log(error);
     res.status(500).send(error);
   })
 })
 
-app.delete('/entries/:id', (req, res) => {
+/*app.delete('/journals/:id', (req, res) => {
   journal_model.deleteEntry(req.params.id)
   .then(response => {
     res.status(200).send(response);
@@ -41,7 +42,8 @@ app.delete('/entries/:id', (req, res) => {
   .catch(error => {
     res.status(500).send(error);
   })
-})
+})*/
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })

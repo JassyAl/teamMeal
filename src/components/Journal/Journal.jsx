@@ -22,13 +22,12 @@ function Journal() {
     }, []);
 
   function getEntries() {
-    fetch('http://localhost:3001')
+    fetch('http://localhost:3001/journals')
       .then(response => {
         return response.text();
       })
       .then(data => {
         setEntries(JSON.parse(data));
-        console.log(data);
       });
   }
 
@@ -49,15 +48,29 @@ function Journal() {
 
   const handleNewEntrySubmit = (event) => {
     event.preventDefault();
+
     const newId = entries[entries.length - 1].id + 1;
     const newEntryWithId = { ...newEntry, id: newId };
-    entries.push(newEntryWithId);
     setNewEntry({
       date: new Date().toISOString().substr(0, 10),
       title: "",
       content: "",
     });
     setNewEntryAnchorEl(null);
+
+    fetch('http://localhost:3001/journals', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: newEntryWithId.date,
+        title: newEntryWithId.title,
+        entry: newEntryWithId.content
+      })
+    });
+
+    getEntries();
   };
 
   const handleEntryClick = (event, entry) => {
