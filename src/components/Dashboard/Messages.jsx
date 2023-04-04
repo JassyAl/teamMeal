@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   List,
@@ -53,16 +53,18 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     padding: theme.spacing(1),
     margin: theme.spacing(1),
-    display: "inline-block",
-    textAlign: "right",
+    display: "block",
+    float: "left",
+    clear: "both",
   },
   messageWrapperRight: {
     backgroundColor: "#FFFFFF",
     borderRadius: "10px",
     padding: theme.spacing(1),
     margin: theme.spacing(1),
-    display: "inline-block",
-    textAlign: "left",
+    display: "block",
+    float: "right",
+    clear: "both",
   },
 }));
 
@@ -88,7 +90,7 @@ const chatListData = [
   },
 ];
 
-const chatMessagesData = [
+/*const chatMessagesData = [
   {
     id: 1,
     sender: "John",
@@ -144,9 +146,29 @@ const chatMessagesData = [
     sender: "Tom",
     content: "Thanks for the invite, but I have plans already.",
   },
-];
+];*/
 
 export default function Messages() {
+  const [chatMessagesData, setChatMessagesData] = useState([{
+    id: -1,
+    sender: "",
+    content: "Loading messages..."
+  }]);
+  useEffect(() => {
+    getMessages();
+  }, []);
+
+  function getMessages() {
+    fetch('http://localhost:3001/messages')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setChatMessagesData(JSON.parse(data));
+      });
+  }
+
+
   const classes = useStyles();
   const [message, setMessage] = useState("");
 
@@ -157,6 +179,18 @@ export default function Messages() {
   const handleSendMessage = (event) => {
     event.preventDefault();
     // TODO: send message logic
+    fetch('http://localhost:3001/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content: message,
+        sender: "You"
+      })
+    });
+
+    setTimeout(getMessages, 200);
   };
 
   return (
@@ -190,7 +224,7 @@ export default function Messages() {
           <Box
               key={message.id}
               className={
-                message.sender === "John"
+                message.sender === "You"
                   ? classes.messageWrapperLeft
                   : classes.messageWrapperRight
               }
