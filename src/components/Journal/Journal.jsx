@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Grid, Modal, TextField, Paper } from "@mui/material";
 import { Stack } from "@mui/material";
 import "./Journal.css";
@@ -15,29 +15,22 @@ const inputStyle = {
   color: "white",
 };
 
-const entries = [
-  {
-    id: 1,
-    date: "2023-03-27",
-    title: "Good",
-    content: "Today was a good day.",
-  },
-  {
-    id: 2,
-    date: "2023-03-26",
-    title: "Struggling",
-    content: "I had a lot of work to do today.",
-  },
-  {
-    id: 3,
-    date: "2023-03-25",
-    title: "Nice walk",
-    content: "I went for a walk in the park.",
-  },
-  { id: 4, date: "2023-03-24", title: "Blah", content: "Today was okay." },
-];
-
 function Journal() {
+  const [entries, setEntries] = useState([]);
+    useEffect(() => {
+      getEntries();
+    }, []);
+
+  function getEntries() {
+    fetch('http://localhost:3001/journals')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setEntries(JSON.parse(data));
+      });
+  }
+
   const [newEntry, setNewEntry] = useState({
     date: new Date().toISOString().substr(0, 10),
     title: "",
@@ -55,15 +48,29 @@ function Journal() {
 
   const handleNewEntrySubmit = (event) => {
     event.preventDefault();
+
     const newId = entries[entries.length - 1].id + 1;
     const newEntryWithId = { ...newEntry, id: newId };
-    entries.push(newEntryWithId);
     setNewEntry({
       date: new Date().toISOString().substr(0, 10),
       title: "",
       content: "",
     });
     setNewEntryAnchorEl(null);
+
+    fetch('http://localhost:3001/journals', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: newEntryWithId.date,
+        title: newEntryWithId.title,
+        entry: newEntryWithId.content
+      })
+    });
+
+    getEntries();
   };
 
   const handleEntryClick = (event, entry) => {
