@@ -190,7 +190,7 @@ function Journal() {
               fullWidth
               style={{ backgroundColor: '#333333', borderRadius: 50 }}
             >
-              {"Date: "} {entry.date}
+              {"Date: "} {entry.date.substring(0, 10)}
               <br />
               {"Title: "}
               {entry.title}
