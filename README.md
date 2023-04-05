@@ -1,7 +1,7 @@
 Demo 1: Each team member contributed equally.
 
 API used: https://rapidapi.com/edamam/api/recipe-search-and-diet/
-Please set API key equal to environment variable REACT_APP_RAPID_API_KEY
+Please set API key equal to environment variable:
 REACT_APP_RAPID_API_KEY='yourAPIkey'
 
 [Demo1 Slides.pptx](https://github.com/JassyAl/teamMeal/files/11163869/Demo1.Slides.pptx)
