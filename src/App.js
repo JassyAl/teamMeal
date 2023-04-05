@@ -14,6 +14,7 @@ import Messages from "./components/Dashboard/Messages";
 import AccountInfo from "./components/Dashboard/AccountInfo";
 import TAC from "./components/SignOn/TAC";
 import JournalEntry from "./components/Journal/JournalEntry";
+import Calendar from "./components/Calendar/Calendar";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
       <Route path="/Profile" element={<Profile/>}></Route>
       <Route path="/Messages" element={<Messages/>}></Route>
       <Route path="/Account" element={<AccountInfo/>}></Route>
+      <Route path="/Calander" element={<Calendar/>}></Route>
       <Route path="/Terms" element={<TAC/>}></Route>
       <Route path="*" element={<NoPage/>}/>
     </Routes>
