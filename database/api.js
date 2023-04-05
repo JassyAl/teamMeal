@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/journals', (req, res) => {
-  message_model.getMessages()
+  journal_model.getEntries()
   .then(response => {
     res.status(200).send(response);
   })

@@ -17,8 +17,7 @@ import HomePage from '../Dashboard/HomePage';
 import Profile from '../Dashboard/Profile';
 import Messages from '../Dashboard/Messages';
 import AccountInfo from '../Dashboard/AccountInfo';
-import Calendar from '../Calendar/Calendar';
-import { Link } from 'react-router-dom';
+
 
 // const StyledInputBase = styled(InputBase)(({ theme }) => ({
 //   color: 'inherit',
@@ -82,9 +81,6 @@ function NavBar() {
       <MenuItem onClick={handleMenuClose} component="a"
                     href="Account"
                     startdecorator={<AccountInfo/>}>My account</MenuItem>
-     <MenuItem onClick={handleMenuClose} component={Link} to="/Calander" startIcon={<Calendar />}>
-  Calendar
-</MenuItem>
     </Menu>
   );
 

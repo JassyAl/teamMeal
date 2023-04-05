@@ -14,13 +14,12 @@ import Profile from "./components/Dashboard/Profile";
 import Messages from "./components/Dashboard/Messages";
 import AccountInfo from "./components/Dashboard/AccountInfo";
 import TAC from "./components/SignOn/TAC";
-import JournalEntry from "./components/Journal/JournalEntry";
 import Calendar from "./components/Calendar/Calendar";
 import SavedRecipes from "./components/Recipes/SavedRecipes";
 import CustomRecipes from "./components/Recipes/CustomRecipes";
+
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from "react";
-
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("chicken");
@@ -39,7 +38,6 @@ function App() {
     <div className="App">
       {showNavBar && <NavBar />}
       <Routes>
-
         <Route path="/" element={<Landing />}></Route>
         <Route path="/SignIn" element={<SignIn />}></Route>
         <Route path="/SignUp" element={<SignUp />}></Route>
@@ -72,7 +70,6 @@ function App() {
         <Route path="/Terms" element={<TAC />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
-
     </div>
   );
 }
