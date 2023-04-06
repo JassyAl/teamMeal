@@ -33,7 +33,7 @@ function HomePage() {
   };
 
   return (
-    <div>
+    
       <div>
         <Typography
           style={{
@@ -48,6 +48,7 @@ function HomePage() {
           Hello, <br />
           {userName}
         </Typography>
+
         <div className="overview">
           <Button
             variant="contained"
@@ -65,18 +66,14 @@ function HomePage() {
         </div>
 
         <Grid container spacing={2}>
-          <Grid style={{ padding: 20 }} item xs={12} md={16} lg={32}>
+          <Grid style={{ padding: 20 }} item xs={12} md={12} lg={12}>
             <Button
               fullWidth
               component="a"
               href="DailyProgress"
               startdecorator={<DailyProgress />}
               style={{
-                padding: "10px",
-                color: "white",
-                textAlign: "left",
-                maxHeight: "80vh",
-                width: "100%",
+                padding: "20px",
               }}
             >
               <Card
@@ -115,13 +112,12 @@ function HomePage() {
             </Button>
           </Grid>
         </Grid>
+
         <Typography
           style={{
             color: "white",
             textAlign: "left",
             paddingLeft: 30,
-            paddingBottom: 20,
-            paddingTop: 30,
             fontWeight: "bolder",
           }}
           className="userName"
@@ -130,8 +126,8 @@ function HomePage() {
           Categories
         </Typography>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={6}>
+        <Grid container spacing={3} style={{ padding: 20 }}>
+        <Grid item xs={5} sm={5} md={8} lg={6}>
             <Button component="a" href="Journal" startdecorator={<Journal />}>
               <Card style={paperStyle}>
                 <CardContent>
@@ -170,7 +166,8 @@ function HomePage() {
               </Card>
             </Button>
           </Grid>
-          <Grid item xs={12} md={6} lg={6}>
+
+          <Grid item xs={5} sm={5} md={8} lg={6}>
             <Button component="a" href="Messages" startdecorator={<Messages />}>
               <Card style={paperStyle}>
                 <CardContent>
@@ -209,7 +206,8 @@ function HomePage() {
               </Card>
             </Button>
           </Grid>
-          <Grid item xs={12} md={6} lg={6}>
+
+          <Grid item xs={5} sm={5} md={8} lg={6}>
             <Button
               component="a"
               href="SavedRecipes"
@@ -255,7 +253,8 @@ function HomePage() {
               </Card>
             </Button>
           </Grid>
-          <Grid item xs={12} md={6} lg={6}>
+
+          <Grid item xs={5} sm={5} md={8} lg={6}>
             <Button component="a" href="Calendar" startdecorator={<Calendar />}>
               <Card style={paperStyle}>
                 <CardContent>
@@ -296,7 +295,7 @@ function HomePage() {
           </Grid>
         </Grid>
       </div>
-    </div>
+    
   );
 }
 

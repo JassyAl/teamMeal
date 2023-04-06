@@ -4,35 +4,37 @@ import { Stack } from "@mui/material";
 import "./Journal.css";
 
 const paperStyle = {
-  padding: "30px",
+  padding: "40px 40px 20px 30px",
   background: "rgb(192, 230, 192)",
-  maxWidth: "50vw", 
+  maxWidth: "80vw",
   maxHeight: "80vh",
 };
 
 const inputStyle = {
   backgroundColor: "lightgray",
   color: "white",
+  maxWidth: "80vw",
+  maxHeight: "80vh",
 };
 
 function Journal() {
   const [entries, setEntries] = useState([]);
-    useEffect(() => {
-      getEntries();
-    }, []);
+  useEffect(() => {
+    getEntries();
+  }, []);
 
   function getEntries() {
-    fetch('http://localhost:3001/journals')
-      .then(response => {
+    fetch("http://localhost:3001/journals")
+      .then((response) => {
         return response.text();
       })
-      .then(data => {
+      .then((data) => {
         setEntries(JSON.parse(data));
       });
   }
 
   const [newEntry, setNewEntry] = useState({
-    date: new Date().toISOString().substr(0, 10),
+    date: new Date().toLocaleString("en-US", { timeZone: "America/Chicago" }),
     title: "",
     content: "",
   });
@@ -58,16 +60,16 @@ function Journal() {
     });
     setNewEntryAnchorEl(null);
 
-    fetch('http://localhost:3001/journals', {
-      method: 'POST',
+    fetch("http://localhost:3001/journals", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         date: newEntryWithId.date,
         title: newEntryWithId.title,
-        entry: newEntryWithId.content
-      })
+        entry: newEntryWithId.content,
+      }),
     });
 
     getEntries();
@@ -82,7 +84,6 @@ function Journal() {
     setEntryAnchorEl(null);
     setSelectedEntry(null);
   };
-  
 
   const filteredEntries = entries.filter((entry) =>
     entry.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -91,14 +92,16 @@ function Journal() {
   return (
     <div className="journals">
       <h1>My Daily Journal</h1>
+
       <Button
         variant="contained"
         color="secondary"
-        style={{ borderRadius: 30 }}
+        style={{ borderRadius: 30, marginLeft: 50 }}
         onClick={(event) => setNewEntryAnchorEl(event.currentTarget)}
       >
         Add New Entry
       </Button>
+
       <Modal
         className="modal"
         open={Boolean(newEntryAnchorEl)}
@@ -114,9 +117,12 @@ function Journal() {
         }}
       >
         <Paper elevation={3} style={paperStyle}>
-          <form onSubmit={handleNewEntrySubmit}>
+          <form
+            onSubmit={handleNewEntrySubmit}
+            style={{ padding: 10, paddingRight: 0 }}
+          >
             <Grid container spacing={3}>
-              <Grid item xs={8}>
+              <Grid item xs={4} sm={6}>
                 <TextField
                   name="title"
                   label="Title"
@@ -131,7 +137,7 @@ function Journal() {
               <Grid item xs={4}>
                 <TextField
                   name="date"
-                  label="Date"
+                  label="Date/Time"
                   variant="outlined"
                   fullWidth
                   style={inputStyle}
@@ -139,7 +145,7 @@ function Journal() {
                   onChange={handleNewEntryChange}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={8} sm={10}>
                 <TextField
                   name="content"
                   label="Express Yourself"
@@ -170,16 +176,17 @@ function Journal() {
 
       <div className="search">
         <br />
-      
-      <Grid  item xs={4}>
-        <TextField
-          label="Search Entries by Title"
-          variant="outlined"
-          style={inputStyle}
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
-        />
-      </Grid></div>
+
+        <Grid item xs={4}>
+          <TextField
+            label="Search Entries by Title"
+            variant="outlined"
+            style={inputStyle}
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+        </Grid>
+      </div>
       <br />
       <Stack className="stack" spacing={3}>
         {filteredEntries.map((entry) => (
@@ -188,7 +195,7 @@ function Journal() {
               onClick={(event) => handleEntryClick(event, entry)}
               variant="contained"
               fullWidth
-              style={{ backgroundColor: '#333333', borderRadius: 50 }}
+              style={{ backgroundColor: "#333333", borderRadius: 50 }}
             >
               {"Date: "} {entry.date.substring(0, 10)}
               <br />
