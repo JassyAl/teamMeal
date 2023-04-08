@@ -1,14 +1,10 @@
-import React from "react";
+import  React from "react";
 import { Card, CardContent, Typography, Button, Grid } from "@material-ui/core";
 import "./Dashboard.css";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import DailyProgress from "../Journal/DailyProgress";
-import Journal from "../Journal/Journal";
-import Messages from "./Messages";
-import Calendar from "../Calendar/Calendar";
 import SavedRecipes from "../Recipes/SavedRecipes";
 
 function HomePage() {
@@ -32,6 +28,7 @@ function HomePage() {
     textAlign: "left",
   };
 
+
   return (
     
       <div>
@@ -49,8 +46,8 @@ function HomePage() {
           {userName}
         </Typography>
 
-        <div className="overview">
-          <Button
+        <div style={{paddingLeft: 30}}>
+          <Button className="overview"
             variant="contained"
             disabled
             color="primary"
@@ -63,6 +60,21 @@ function HomePage() {
           >
             Overview
           </Button>
+          <Button
+          className="health"
+          variant="text"
+          color="primary"
+          href="Health"
+          style={{
+            backgroundColor: "#333333",
+            color: "white",
+            borderRadius: 30,
+            width: 200,
+            marginLeft: 20,
+          }}
+        >
+          Health Guides
+        </Button>
         </div>
 
         <Grid container spacing={2}>
@@ -71,7 +83,6 @@ function HomePage() {
               fullWidth
               component="a"
               href="DailyProgress"
-              startdecorator={<DailyProgress />}
               style={{
                 padding: "20px",
               }}
@@ -128,7 +139,7 @@ function HomePage() {
 
         <Grid container spacing={3} style={{ padding: 20 }}>
         <Grid item xs={5} sm={5} md={8} lg={6}>
-            <Button component="a" href="Journal" startdecorator={<Journal />}>
+            <Button component="a" href="Journal" >
               <Card style={paperStyle}>
                 <CardContent>
                   <AutoStoriesIcon
@@ -168,7 +179,7 @@ function HomePage() {
           </Grid>
 
           <Grid item xs={5} sm={5} md={8} lg={6}>
-            <Button component="a" href="Messages" startdecorator={<Messages />}>
+            <Button component="a" href="Messages">
               <Card style={paperStyle}>
                 <CardContent>
                   <CircleNotificationsIcon
@@ -255,7 +266,7 @@ function HomePage() {
           </Grid>
 
           <Grid item xs={5} sm={5} md={8} lg={6}>
-            <Button component="a" href="Calendar" startdecorator={<Calendar />}>
+            <Button component="a" href="Calendar">
               <Card style={paperStyle}>
                 <CardContent>
                   <CalendarMonthIcon

@@ -11,27 +11,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Home  from '@mui/icons-material/Home';
-import { styled } from '@mui/material/styles';
 import "./appBar.css";
 import HomePage from '../Dashboard/HomePage';
 import Profile from '../Dashboard/Profile';
 import Messages from '../Dashboard/Messages';
 import AccountInfo from '../Dashboard/AccountInfo';
-
-
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//   color: 'inherit',
-//   '& .MuiInputBase-input': {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('md')]: {
-//       width: '20ch',
-//     },
-//   },
-// }));
 
 function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);

@@ -17,6 +17,7 @@ import TAC from "./components/SignOn/TAC";
 import Calendar from "./components/Calendar/Calendar";
 import SavedRecipes from "./components/Recipes/SavedRecipes";
 import CustomRecipes from "./components/Recipes/CustomRecipes";
+import HealthGuides from "./components/Dashboard/Health";
 
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from "react";
@@ -67,6 +68,7 @@ function App() {
         <Route path="/Calendar" element={<Calendar />}></Route>
         <Route path="/Messages" element={<Messages />}></Route>
         <Route path="/Account" element={<AccountInfo />}></Route>
+        <Route path="/Health" element={<HealthGuides/>}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
