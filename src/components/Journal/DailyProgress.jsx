@@ -12,6 +12,35 @@ import {
   Notes as NotesIcon 
 } from "@mui/icons-material";
 
+export const recommendedSites = [
+  { name: 'ChooseMyPlate.gov', url: 'https://www.choosemyplate.gov/' },
+  { name: 'Mayo Clinic', url: 'https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating' },
+  { name: 'Harvard School of Public Health', url: 'https://www.hsph.harvard.edu/nutritionsource/' },
+  { name: 'Academy of Nutrition and Dietetics', url: 'https://www.eatright.org/' },
+  { name: 'Nutrition.gov', url: 'https://www.nutrition.gov/' },
+  { name: 'Center for Science in the Public Interest', url: 'https://cspinet.org/' },
+  { name: "Today's Dietitian", url: 'https://www.todaysdietitian.com/' },
+  { name: 'Food Politics', url: 'https://www.foodpolitics.com/' },
+  { name: 'American Society for Nutrition', url: 'https://nutrition.org/' },
+  { name: 'EatFresh.org', url: 'https://www.eatfresh.org/' },
+  { name: 'NutritionFacts.org', url: 'https://nutritionfacts.org/' },
+  { name: 'MyFitnessPal Blog', url: 'https://blog.myfitnesspal.com/' },
+  { name: 'EatingWell', url: 'https://www.eatingwell.com/' },
+  { name: 'Vegetarian Resource Group', url: 'https://www.vrg.org/' },
+  { name: 'Whole Foods Market Blog', url: 'https://www.wholefoodsmarket.com/blog' },
+  { name: 'Clean Eating Magazine', url: 'https://www.cleaneatingmag.com/' },
+  { name: 'The Nutrition Source', url: 'https://www.hsph.harvard.edu/nutritionsource/' },
+  { name: 'Cooking Light', url: 'https://www.cookinglight.com/' },
+  { name: 'The World Health Organization', url: 'https://www.who.int/' },
+  { name: 'The Institute for Functional Medicine', url: 'https://www.ifm.org/' },
+  { name: 'Oldways', url: 'https://oldwayspt.org/' },
+  { name: 'Healthy Food Guide', url: 'https://www.healthyfood.com/' },
+  { name: 'The Nutrition Society', url: 'https://www.nutritionsociety.org/' },
+  { name: 'Eat This, Not That!', url: 'https://www.eatthis.com/' },
+  { name: 'Nutrition Stripped', url: 'https://nutritionstripped.com/' },
+  { name: 'HealthyChildren.org', url: 'https://www.healthychildren.org/' },
+  { name: 'The Journal of Nutrition', url: 'https://academic.oup.com/jn' }
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,40 +77,9 @@ function RecommendedSites(props) {
   );
 }
 
-
 function DailyProgress() {
   const classes = useStyles();
-  // healthy sites array
-  const recommendedSites = [
-    { name: 'ChooseMyPlate.gov', url: 'https://www.choosemyplate.gov/' },
-    { name: 'Mayo Clinic', url: 'https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating' },
-    { name: 'Harvard School of Public Health', url: 'https://www.hsph.harvard.edu/nutritionsource/' },
-    { name: 'Academy of Nutrition and Dietetics', url: 'https://www.eatright.org/' },
-    { name: 'Nutrition.gov', url: 'https://www.nutrition.gov/' },
-    { name: 'Center for Science in the Public Interest', url: 'https://cspinet.org/' },
-    { name: "Today's Dietitian", url: 'https://www.todaysdietitian.com/' },
-    { name: 'Food Politics', url: 'https://www.foodpolitics.com/' },
-    { name: 'American Society for Nutrition', url: 'https://nutrition.org/' },
-    { name: 'EatFresh.org', url: 'https://www.eatfresh.org/' },
-    { name: 'NutritionFacts.org', url: 'https://nutritionfacts.org/' },
-    { name: 'MyFitnessPal Blog', url: 'https://blog.myfitnesspal.com/' },
-    { name: 'EatingWell', url: 'https://www.eatingwell.com/' },
-    { name: 'Vegetarian Resource Group', url: 'https://www.vrg.org/' },
-    { name: 'Whole Foods Market Blog', url: 'https://www.wholefoodsmarket.com/blog' },
-    { name: 'Clean Eating Magazine', url: 'https://www.cleaneatingmag.com/' },
-    { name: 'The Nutrition Source', url: 'https://www.hsph.harvard.edu/nutritionsource/' },
-    { name: 'Cooking Light', url: 'https://www.cookinglight.com/' },
-    { name: 'The World Health Organization', url: 'https://www.who.int/' },
-    { name: 'The Institute for Functional Medicine', url: 'https://www.ifm.org/' },
-    { name: 'Oldways', url: 'https://oldwayspt.org/' },
-    { name: 'Healthy Food Guide', url: 'https://www.healthyfood.com/' },
-    { name: 'The Nutrition Society', url: 'https://www.nutritionsociety.org/' },
-    { name: 'Eat This, Not That!', url: 'https://www.eatthis.com/' },
-    { name: 'Nutrition Stripped', url: 'https://nutritionstripped.com/' },
-    { name: 'HealthyChildren.org', url: 'https://www.healthychildren.org/' },
-    { name: 'The Journal of Nutrition', url: 'https://academic.oup.com/jn' }
-  ];
-  
+
   return (
     <div>
       <div>
@@ -152,7 +150,6 @@ function DailyProgress() {
               <ArrowForwardIosIcon style={{ paddingRight: 20 }} />
             </Button>
           </Grid>
-          {/* </Grid> */}
         </Stack>
       </div>
     </div>
