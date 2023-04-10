@@ -1,9 +1,16 @@
 import React from "react";
+import SearchBar from './SearchBar';
+import DefaultRecipes from "./DefaultRecipes";
 
-function Recipes() {
+
+
+
+
+function Recipes({ recipes, selectedCategory, setSelectedCategory }) {
   return (
     <div>
-      <h1>Find Recipes</h1>
+      <SearchBar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <DefaultRecipes recipes={recipes} />
     </div>
   );
 }

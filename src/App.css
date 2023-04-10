@@ -1,5 +1,21 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
 }
 
+
+.App {
+  /* text-align: center; */
+  margin-top: 0;
+  background-color: #1A1A1A;
+  height: 100vh;
+  background-attachment: fixed;
+  overflow: auto;
+}
+
+h1 {
+  color: lightgreen;
+  padding-bottom: 30px;
+  text-align: center;
+}
 
