@@ -46,7 +46,7 @@ function HomePage() {
           {userName}
         </Typography>
 
-        <div style={{paddingLeft: 30}}>
+        <div style={{paddingLeft: 40}}>
           <Button className="overview"
             variant="contained"
             disabled
@@ -56,6 +56,7 @@ function HomePage() {
               color: "white",
               borderRadius: 30,
               width: 200,
+              
             }}
           >
             Overview
@@ -77,8 +78,9 @@ function HomePage() {
         </Button>
         </div>
 
-        <Grid container spacing={2}>
-          <Grid style={{ padding: 20 }} item xs={12} md={12} lg={12}>
+        <Grid >
+          <Grid style={{ padding: "20px 30px 10px 10px"
+}} item xs={12} md={12} lg={12}>
             <Button
               fullWidth
               component="a"
@@ -128,7 +130,7 @@ function HomePage() {
           style={{
             color: "white",
             textAlign: "left",
-            paddingLeft: 30,
+            paddingLeft: 40,
             fontWeight: "bolder",
           }}
           className="userName"
@@ -137,8 +139,8 @@ function HomePage() {
           Categories
         </Typography>
 
-        <Grid container spacing={3} style={{ padding: 20 }}>
-        <Grid item xs={5} sm={5} md={8} lg={6}>
+        <Grid container spacing={3} style={{ padding: 30 }}>
+        <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
             <Button component="a" href="Journal" >
               <Card style={paperStyle}>
                 <CardContent>
@@ -178,7 +180,7 @@ function HomePage() {
             </Button>
           </Grid>
 
-          <Grid item xs={5} sm={5} md={8} lg={6}>
+          <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
             <Button component="a" href="Messages">
               <Card style={paperStyle}>
                 <CardContent>
@@ -218,7 +220,7 @@ function HomePage() {
             </Button>
           </Grid>
 
-          <Grid item xs={5} sm={5} md={8} lg={6}>
+          <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
             <Button
               component="a"
               href="SavedRecipes"
@@ -237,7 +239,7 @@ function HomePage() {
                   >
                     {savedMeals} Saved Meals
                   </Typography>
-                  <Typography variant="h5">My Favorite Recipes</Typography>
+                  <Typography variant="h5">Favorite Recipes</Typography>
                   <div className="break" />
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <div
@@ -265,7 +267,7 @@ function HomePage() {
             </Button>
           </Grid>
 
-          <Grid item xs={5} sm={5} md={8} lg={6}>
+          <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
             <Button component="a" href="Calendar">
               <Card style={paperStyle}>
                 <CardContent>
