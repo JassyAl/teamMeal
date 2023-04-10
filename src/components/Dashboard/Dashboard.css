@@ -1,0 +1,25 @@
+.username {
+    color: aliceblue;
+    text-align: left;
+}
+
+.categories {
+        color: aliceblue;
+        text-align: left;
+}
+
+.break {
+    padding: 20px;
+}
+
+.overview {
+    padding-left: 30px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.health {
+        padding-left: 30px;
+        padding-bottom: 10px;
+        text-align: left;
+    }

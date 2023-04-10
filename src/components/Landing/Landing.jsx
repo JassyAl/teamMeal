@@ -9,25 +9,28 @@ import TAC from "../SignOn/TAC";
 const Landing = () => {
   return (
     <div className="Landing">
+            <img className="photo" src="/images/tpar_image.png" alt="Logo" />
       <h1 className="Title">Daily Meal Companion</h1>
-      <img className="logo" src="/images/background.png" alt="Logo" />
       <h2 className="slogan">The only meal app you need</h2>
+
       <div className="SignIn">
         <Button
           variant="contained"
           color="primary"
+          style={{ borderRadius: 30 }}
           component="a"
           href="SignIn"
-          startDecorator={<SignIn />}
+          startdecorator={<SignIn />}
         >
           Sign In
-        </Button>
+        </Button>&nbsp;&nbsp;&nbsp;&nbsp;
         <Button
           variant="contained"
           color="secondary"
+          style={{ borderRadius: 30 }}
           component="a"
           href="FindRecipes"
-          startDecorator={<Recipes />}
+          startdecorator={<Recipes />}
         >
           Continue without signing in
         </Button>
@@ -38,7 +41,7 @@ const Landing = () => {
         className="SignUp"
         component="a"
         href="SignUp"
-        startDecorator={<SignUp />}
+        startdecorator={<SignUp />}
       >
         Don't have an account? Sign up here.
       </Button>
@@ -47,7 +50,7 @@ const Landing = () => {
         By Continuing you agree to the <Button variant="text" className="Terms"
         component="a"
         href="Terms"
-        startDecorator={<TAC/>}>Terms and Conditions</Button>.
+        startdecorator={<TAC/>}>Terms and Conditions</Button>.
       </p>
     </div>
   );
