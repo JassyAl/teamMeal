@@ -73,6 +73,21 @@ function HomePage() {
         >
           Health Guides
         </Button>
+        <Button
+          className="grocery"
+          variant="text"
+          color="primary"
+          href="GroceryList"
+          style={{
+            backgroundColor: "purple",
+            color: "white",
+            borderRadius: 30,
+            width: 200,
+            marginLeft: 20,
+          }}
+        >
+          Grocery List
+        </Button>
       </div>
 
       <Grid>
