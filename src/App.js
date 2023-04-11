@@ -21,6 +21,7 @@ import HealthGuides from "./components/Dashboard/Health";
 
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from "react";
+import GroceryList from "./components/Recipes/GroceryList";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("chicken");
@@ -70,6 +71,7 @@ function App() {
         <Route path="/Account" element={<AccountInfo />}></Route>
         <Route path="/Health" element={<HealthGuides/>}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
+        <Route path="/GroceryList" element={<GroceryList/>}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>
