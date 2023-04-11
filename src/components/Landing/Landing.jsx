@@ -1,10 +1,6 @@
 import React from "react";
 import "./Landing.css";
 import Button from "@mui/material/Button";
-import SignIn from "../SignOn/SignIn";
-import SignUp from "../SignOn/SignUp";
-import Recipes from "../Recipes/FindRecipes";
-import TAC from "../SignOn/TAC";
 
 const Landing = () => {
   return (
@@ -20,7 +16,6 @@ const Landing = () => {
           style={{ borderRadius: 30 }}
           component="a"
           href="SignIn"
-          startdecorator={<SignIn />}
         >
           Sign In
         </Button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -30,7 +25,6 @@ const Landing = () => {
           style={{ borderRadius: 30 }}
           component="a"
           href="FindRecipes"
-          startdecorator={<Recipes />}
         >
           Continue without signing in
         </Button>
@@ -41,7 +35,6 @@ const Landing = () => {
         className="SignUp"
         component="a"
         href="SignUp"
-        startdecorator={<SignUp />}
       >
         Don't have an account? Sign up here.
       </Button>
@@ -49,8 +42,7 @@ const Landing = () => {
       <p className="Terms">
         By Continuing you agree to the <Button variant="text" className="Terms"
         component="a"
-        href="Terms"
-        startdecorator={<TAC/>}>Terms and Conditions</Button>.
+        href="Terms">Terms and Conditions</Button>.
       </p>
     </div>
   );
