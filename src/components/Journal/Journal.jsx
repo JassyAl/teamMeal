@@ -92,16 +92,22 @@ function Journal() {
   return (
     <div className="journals">
       <h1>My Daily Journal</h1>
-
-      <Button
-        variant="contained"
-        color="secondary"
-        style={{ borderRadius: 30, marginLeft: 50 }}
-        onClick={(event) => setNewEntryAnchorEl(event.currentTarget)}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        Add New Entry
-      </Button>
-
+        <Button
+          variant="contained"
+          color="secondary"
+          style={{ borderRadius: 30, width: 250, fontSize: 15 }}
+          onClick={(event) => setNewEntryAnchorEl(event.currentTarget)}
+        >
+          Add New Entry
+        </Button>
+      </div>
       <Modal
         className="modal"
         open={Boolean(newEntryAnchorEl)}
@@ -121,7 +127,16 @@ function Journal() {
             onSubmit={handleNewEntrySubmit}
             style={{ padding: 10, paddingRight: 0 }}
           >
-            <Grid container spacing={3}>
+            <Grid
+              style={{
+                padding: "30px 10px 20px 0",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              container
+              spacing={3}
+            >
               <Grid item xs={4} sm={6}>
                 <TextField
                   name="title"
@@ -215,9 +230,15 @@ function Journal() {
                 vertical: "top",
                 horizontal: "center",
               }}
+              style={{
+                paddingBottom: 200,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <Paper elevation={3} style={paperStyle}>
-                <div>{entry.content}</div>
+                <div style={{ paddingBottom: 60, padding: 30 }}>{entry.content}</div>
               </Paper>
             </Modal>
           </div>
