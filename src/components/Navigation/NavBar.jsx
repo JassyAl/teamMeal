@@ -1,10 +1,13 @@
 import * as React from "react";
-import { AppBar, Box, Toolbar, IconButton, Badge, MenuItem, Menu } from "@mui/material";
+import { useState } from "react";
+import { Avatar, AppBar, Box, Toolbar, IconButton, Badge, MenuItem, Menu } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Mail as MailIcon, Notifications as NotificationsIcon } from "@mui/icons-material";
+import { Mail as MailIcon } from "@mui/icons-material";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Home from "@mui/icons-material/Home";
 import "./appBar.css";
+// import { handleImageChange } from '../Dashboard/Profile';
+
 
 function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,6 +32,12 @@ function NavBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  // navbar image component
+  const [image, setImage] = useState("");
+  // const handleImageChange = (image) => {
+  //   setImage(image);
+  // };
 
   const menuId = "primary-search-account-menu";
 
@@ -82,18 +91,6 @@ function NavBar() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -102,7 +99,7 @@ function NavBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Avatar alt="Profile" src={image} />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -136,18 +133,11 @@ function NavBar() {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              component="a"
+              href="Messages"
             >
               <Badge badgeContent={4} color="error">
                 <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
               </Badge>
             </IconButton>
             <IconButton
