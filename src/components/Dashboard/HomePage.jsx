@@ -43,52 +43,78 @@ function HomePage() {
         {userName}
       </Typography>
 
-      <div style={{ paddingLeft: 40 }}>
-        <Button
-          className="overview"
-          variant="contained"
-          disabled
-          color="primary"
-          style={{
-            backgroundColor: "royalblue",
-            color: "white",
-            borderRadius: 30,
-            width: 200,
+      <Grid container spacing={3} style={{ paddingLeft: 40, paddingRight: 30 }}>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2px",
           }}
         >
-          Overview
-        </Button>
-        <Button
-          className="health"
-          variant="text"
-          color="primary"
-          href="Health"
-          style={{
-            backgroundColor: "#333333",
-            color: "white",
-            borderRadius: 30,
-            width: 200,
-            marginLeft: 20,
-          }}
+          <Button
+            className="overview"
+            variant="contained"
+            disabled
+            color="primary"
+            style={{
+              backgroundColor: "royalblue",
+              color: "white",
+              borderRadius: 30,
+              width: 400
+            }}
+          >
+            Overview
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{ display: "flex", marginBottom: "2px" }}
         >
-          Health Guides
-        </Button>
-        <Button
-          className="grocery"
-          variant="text"
-          color="primary"
-          href="GroceryList"
-          style={{
-            backgroundColor: "purple",
-            color: "white",
-            borderRadius: 30,
-            width: 200,
-            marginLeft: 20,
-          }}
+          <Button
+            className="health"
+            variant="text"
+            color="primary"
+            href="Health"
+            style={{
+              backgroundColor: "#333333",
+              color: "white",
+              borderRadius: 30,
+              width: 400
+            }}
+          >
+            Health Guides
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{ display: "flex", marginBottom: "2px" }}
         >
-          Grocery List
-        </Button>
-      </div>
+          <Button
+            className="grocery"
+            variant="text"
+            color="primary"
+            href="GroceryList"
+            style={{
+              backgroundColor: "purple",
+              color: "white",
+              borderRadius: 30,
+              width: 400
+            }}
+          >
+            Grocery List
+          </Button>
+        </Grid>
+      </Grid>
 
       <Grid>
         <Grid
@@ -100,10 +126,10 @@ function HomePage() {
         >
           <Button
             fullWidth
-            component="a"
             href="DailyProgress"
             style={{
-              padding: "20px",
+              paddingLeft: 20,
+              paddingRight: 15,
             }}
           >
             <Card
@@ -158,7 +184,7 @@ function HomePage() {
 
       <Grid container spacing={3} style={{ padding: 30 }}>
         <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
-          <Button component="a" href="Journal">
+          <Button href="Journal">
             <Card style={paperStyle}>
               <CardContent>
                 <AutoStoriesIcon
@@ -198,7 +224,7 @@ function HomePage() {
         </Grid>
 
         <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
-          <Button component="a" href="Messages">
+          <Button href="Messages">
             <Card style={paperStyle}>
               <CardContent>
                 <CircleNotificationsIcon
@@ -236,7 +262,7 @@ function HomePage() {
         </Grid>
 
         <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
-          <Button component="a" href="SavedRecipes">
+          <Button href="SavedRecipes">
             <Card style={paperStyle}>
               <CardContent>
                 <RestaurantMenuIcon
@@ -279,7 +305,7 @@ function HomePage() {
         </Grid>
 
         <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
-          <Button component="a" href="Calendar">
+          <Button href="Calendar">
             <Card style={paperStyle}>
               <CardContent>
                 <CalendarMonthIcon
