@@ -23,6 +23,12 @@
         padding-bottom: 10px;
         text-align: left;
     }
+.grocery {
+    padding-left: 30px;
+    padding-bottom: 10px;
+    text-align: left;
+
+}
 
 body {
     overflow-x: hidden;
