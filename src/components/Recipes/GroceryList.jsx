@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 function GroceryList() {
   const [groceries, setGroceries] = useState([]);
@@ -84,6 +85,26 @@ function GroceryList() {
     printWindow.print();
   };
 
+  // try sharing functions
+  const handleShareByEmail = async () => {
+    const emailBody = "Here's my grocery list:\n\n";
+    const items = groceries.map((grocery) => grocery.name).join("\n");
+  
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: listTitle,
+          text: emailBody + items,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      const emailUrl = `mailto:?subject=${encodeURIComponent(listTitle)}&body=${encodeURIComponent(emailBody + items)}`;
+      window.location.href = emailUrl;
+    }
+  };
+  
   const formStyle = {
     paddingLeft: 10,
     fontSize: 20,
@@ -124,7 +145,9 @@ function GroceryList() {
         >
           Add Item
         </Button>
-      </form>      <IconButton
+      </form>      
+      <div>
+      <IconButton
         variant="contained"
         aria-label="Print List"
         style={{ color: "lightgreen", marginLeft: 40}}
@@ -133,6 +156,15 @@ function GroceryList() {
       >
         <PrintOutlinedIcon/>
       </IconButton>
+      <IconButton
+            variant="contained"
+            aria-label="Share List by Email"
+            style={{ color: "blue", marginRight: 10}}
+            onClick={handleShareByEmail}
+            title="Share List by Email"
+          >
+            <EmailOutlinedIcon/>
+          </IconButton></div>
       <h3
         style={{
           textAlign: "left",
