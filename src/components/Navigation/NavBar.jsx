@@ -1,15 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
 import { Avatar, AppBar, Box, Toolbar, IconButton, Badge, MenuItem, Menu } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Mail as MailIcon } from "@mui/icons-material";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Home from "@mui/icons-material/Home";
 import "./appBar.css";
-// import { handleImageChange } from '../Dashboard/Profile';
 
 
-function NavBar() {
+function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -34,10 +32,7 @@ function NavBar() {
   };
 
   // navbar image component
-  const [image, setImage] = useState("");
-  // const handleImageChange = (image) => {
-  //   setImage(image);
-  // };
+  const { image } = props;
 
   const menuId = "primary-search-account-menu";
 
@@ -99,7 +94,7 @@ function NavBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <Avatar alt="Profile" src={image} />
+          <Avatar alt="Profile" src={image} sx={{ width: 32, height: 32 }}/>
         </IconButton>
         <p>Profile</p>
       </MenuItem>
