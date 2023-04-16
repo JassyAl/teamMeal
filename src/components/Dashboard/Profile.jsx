@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProfilePage() {
+function ProfilePage(props) {
   const classes = useStyles();
   const [username, setUsername] = useState("Healthy Jack");
   const [email, setEmail] = useState("healthyjack@gmail.com");
-  const [image, setImage] = useState("");
+  const { image, setImage } = props;
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -50,7 +50,16 @@ function ProfilePage() {
 
   return (
     <div className={classes.root}>
-      <Avatar alt={username} src={image} className={classes.avatar} />
+      <Avatar
+        alt={username}
+        src={image}
+        className={classes.avatar}
+        onClick={() => document.getElementById("avatar-upload").click()}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = 0.5)}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = 1)}
+        onChange={(e) => setImage(e.target.value)}
+      />
+
       <Typography variant="h3">{username}</Typography>
       <Typography variant="subtitle2">{email}</Typography>
       <input
