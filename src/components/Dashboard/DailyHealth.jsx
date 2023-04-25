@@ -37,26 +37,38 @@ function DailyHealth() {
     0,
     0
   );
-  targetTime.setUTCHours(5); // Set to 12am Central Time
+  // Set to 12am Central Time
+  targetTime.setUTCHours(5); 
   if (targetTime < now) {
-    targetTime.setDate(targetTime.getDate() + 1); // If already past 12am, set to the next day
+    // If already past 12am, set to the next day
+    targetTime.setDate(targetTime.getDate() + 1); 
   }
-  const timeUntilTarget = targetTime - now;
+  //   const timeUntilTarget = targetTime - now;
+  const timeUntilTarget = targetTime.getTime() - now.getTime();
 
   useEffect(() => {
     const currentTime = new Date();
-    const currentHour = currentTime.getUTCHours() - 5; // convert UTC to Central Time
-    const currentDayOfWeek = currentTime.getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    const currentSiteIndex = currentHour + currentDayOfWeek * 24; // calculate the index of the current site
-    const currentSite = recommendedSites[currentSiteIndex]; // get the current site object from the recommendedSites array
+    // convert UTC to Central Time
+    const currentHour = currentTime.getUTCHours() - 5; 
+    // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const currentDayOfWeek = currentTime.getUTCDay(); 
+    // calculate the index of the current site
+    const currentSiteIndex = currentHour + currentDayOfWeek * 24; 
+    // get the current site object from the recommendedSites array
+    const currentSite = recommendedSites[currentSiteIndex]; 
     setCurrentSite(currentSite);
 
     const expiryTime = new Date(currentTime);
-    expiryTime.setUTCHours(24 - 19, 0, 0, 0); // set the expiry time to midnight UTC (6pm Central Time)
+    // Set to midnight Central Time
+    expiryTime.setUTCHours(5, 0, 0, 0); 
+    // Set to the next day
+    expiryTime.setDate(expiryTime.getDate() + 1); 
+
     setExpiryTime(expiryTime);
 
-    const randomSite =
-      recommendedSites[Math.floor(Math.random() * recommendedSites.length)]; // select a random site from the recommendedSites array
+    const randomSite = 
+    // select a random site from the recommendedSites array
+      recommendedSites[Math.floor(Math.random() * recommendedSites.length)];
     setCurrentSite(randomSite);
   }, []);
 
@@ -64,14 +76,19 @@ function DailyHealth() {
     const timer = setInterval(() => {
       const currentTime = new Date();
       if (currentTime >= expiryTime) {
-        const currentHour = currentTime.getUTCHours() - 5; // convert UTC to Central Time
-        const currentDayOfWeek = currentTime.getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-        const currentSiteIndex = currentHour + currentDayOfWeek * 24; // calculate the index of the current site
-        const currentSite = recommendedSites[currentSiteIndex]; // get the current site object from the recommendedSites array
+        // convert UTC to Central Time
+        const currentHour = currentTime.getUTCHours() - 5; 
+        // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        const currentDayOfWeek = currentTime.getUTCDay(); 
+        // calculate the index of the current site
+        const currentSiteIndex = currentHour + currentDayOfWeek * 24; 
+        // get the current site object from the recommendedSites array
+        const currentSite = recommendedSites[currentSiteIndex]; 
         setCurrentSite(currentSite);
 
         const newExpiryTime = new Date(currentTime);
-        newExpiryTime.setUTCHours(24 - 19, 0, 0, 0); // set the new expiry time to midnight UTC (6pm Central Time)
+        // set the new expiry time to midnight UTC (6pm Central Time)
+        newExpiryTime.setUTCHours(24 - 19, 0, 0, 0); 
         setExpiryTime(newExpiryTime);
       }
     }, timeUntilTarget);
