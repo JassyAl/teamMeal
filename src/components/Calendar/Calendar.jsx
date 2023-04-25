@@ -6,6 +6,7 @@ import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "./Calendar.css"; // Import the CSS file here
+import { v4 as uuidv4 } from 'uuid'; 
 
 function Calendar() {
   const [events, setEvents] = useState([]);
@@ -13,6 +14,7 @@ function Calendar() {
   const titleRef = useRef();
   const startRef = useRef();
   const endRef = useRef();
+  const descRef = useRef();
 
   useEffect(() => {
     if (selectedEvent) {
@@ -40,28 +42,37 @@ function Calendar() {
     const title = titleRef.current.value;
     const start = startRef.current.value;
     const end = endRef.current.value;
-    const newEvent = { title, start, end };
-    setEvents((prevEvents) => []);
+    const description = descRef.current.value; 
+    const newEvent = { id: uuidv4(), title, description, start, end };
     setEvents((prevEvents) => [...prevEvents, newEvent]);
     titleRef.current.value = "";
     startRef.current.value = "";
-    endRef.current.value = "";
+    endRef.current.value = ""; 
+    descRef.current.vale = ""; 
   }
 
   function handleEventClick(info) {
     setSelectedEvent(info.event);
+    console.log(info.event);
+    const description = info.event.extendedProps.description;
   }
 
-  function handlePopupClose() {
+  function deleteEvent() {
     setEvents((prevEvents) =>
-      prevEvents.filter((event) => event !== selectedEvent)
+      prevEvents.filter((event) => event.id !== selectedEvent.id)
     );
     setSelectedEvent(null);
-  }
+  } 
+function handlePopupClose() {
+  setSelectedEvent(null); 
+} 
 
   function handleDelete() {
-    selectedEvent.remove();
-    handlePopupClose();
+    selectedEvent.remove();   
+   //  setEvents((prevEvents) => []);
+    deleteEvent(); 
+    console.log(events);
+    
   }
 
   const calendarOptions = {
@@ -81,29 +92,34 @@ function Calendar() {
   return (
     <div>
       <h1>Calendar</h1>
-      <div
-        style={{
-          justifyContent: "center",
-          paddingLeft: 50,
-          paddingRight: 50,
-          alignItems: "center",
-        }}
-      >
-        <FullCalendar {...calendarOptions} key={events.length} />
-        {selectedEvent && (
-          <div className="popup">
-            <h2>{selectedEvent.title}</h2>
-            <button onClick={handleDelete}>Delete</button>
-            <button>Edit</button>
-            <button onClick={handlePopupClose}>Close</button>
-          </div>
-        )}
+<div style={{
+  justifyContent: "center",
+  paddingLeft: 50,  
+  paddingRight: 50,
+  alignItems: "center",
+}}>
+  <FullCalendar {...calendarOptions} key={events.length} />
+  {selectedEvent && (
+    <div className="popup-box">
+      <div className="popup-content">
+      <span className="close-btn" onClick={handlePopupClose}>&times;</span>
+        <h2>{selectedEvent.title}</h2>
+        <p>{selectedEvent.extendedProps.description}</p>
+        <button className="delete-btn" onClick={handleDelete}>Delete</button>
+      <button>Edit</button>
+        <button onClick={handlePopupClose}>Close</button>
       </div>
+    </div>
+  )}
+</div>
       {/* <div > */}
       <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-        <label>Event Title:</label>
+        <label>Meal Plan Title:</label>
         <input type="text" ref={titleRef} required />
         <br />
+  <label>Description:</label>
+  <input type="text" ref={descRef} required />
+  <br />
         <label>Start Date:</label>
         <input type="date" ref={startRef} required />
         <br />

@@ -58,6 +58,9 @@ function NavBar(props) {
       <MenuItem onClick={handleMenuClose} component="a" href="Account">
         My account
       </MenuItem>
+      <MenuItem onClick={handleMenuClose} component="a" href="Calendar">
+Calendar
+</MenuItem>
     </Menu>
   );
 

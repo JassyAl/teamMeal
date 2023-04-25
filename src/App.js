@@ -21,6 +21,7 @@ import GroceryList from "./components/Recipes/GroceryList";
 import ProfilePage from "./components/Dashboard/Profile";
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from "react";
+import DailyHealth from "./components/Dashboard/DailyHealth";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
 
   const location = useLocation();
   // render the navbar on all routes except the landing page
-  const showNavBar = location.pathname !== "/";
+  const showNavBar = location.pathname !== "/" && location.pathname !== "/DailyHealth";
   return (
     <div className="App">
       {showNavBar && <NavBar image={image} setImage={setImage} />}
@@ -73,6 +74,7 @@ function App() {
         <Route path="/Health" element={<HealthGuides/>}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
         <Route path="/GroceryList" element={<GroceryList/>}></Route>
+        <Route path="/DailyHealth" element={<DailyHealth/>}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>
