@@ -1,30 +1,22 @@
 import axios from 'axios';
 
-//uses hits and /search
-const BASE_URL = 'https://edamam-recipe-search.p.rapidapi.com';
+const BASE_URL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes';
 
 
 const options = {
     //method: 'GET',
     url: BASE_URL,
+    params: {
+        number: '2',
+        addRecipeNutrition: 'true'
+        //addRecipeInformation: 'true'
+    },
     headers: {
-        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-        'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+        'content-type': 'application/octet-stream',
+        'X-RapidAPI-Key': 'c0f12444f6msh83117ab0f39c3aap1209a9jsn0bafd8130fc3',
+        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
 };
-
-
-//uses hints and /parser
-// const BASE_URL = 'https://edamam-food-and-grocery-database.p.rapidapi.com';
-//
-// const options = {
-//     url: 'https://edamam-food-and-grocery-database.p.rapidapi.com',
-//     headers: {
-//         'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-//         'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-//     }
-// };
-
 
 export const fetchFromAPI = async (url) => {  // template string backtick
     const { data } = await axios.get(`${BASE_URL}/${url}`, options);
@@ -33,12 +25,29 @@ export const fetchFromAPI = async (url) => {  // template string backtick
 }
 
 
-// const BASE_URL = 'https://api.edamam.com/api/recipes';
-// const KEY = process.env.EDAMAM_KEY;
-// const ID = process.env.EDAMAM_ID;
-//
+
+
+//************ */
+
+//uses hits and /search
+// const BASE_URL = 'https://edamam-recipe-search.p.rapidapi.com';
+
+
+// const options = {
+//     //method: 'GET',
+//     url: BASE_URL,
+//     headers: {
+//         'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+//         'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+//     }
+// };
+
 // export const fetchFromAPI = async (url) => {  // template string backtick
-//     const { data } = await axios.get(`${BASE_URL}/${url}&api_id=${ID}&app_key=${KEY}`);
-//
+//     const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+
+//     console.log(data);
 //     return data;
 // }
+
+
+
