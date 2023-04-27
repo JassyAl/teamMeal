@@ -24,7 +24,7 @@ const Landing = () => {
           color="secondary"
           style={{ borderRadius: 30 }}
           component="a"
-          href="FindRecipes"
+          href="DailyHealth"
         >
           Continue without signing in
         </Button>
