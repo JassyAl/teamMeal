@@ -29,8 +29,8 @@ function App() {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setRecipes(data.hits)
+    fetchFromAPI(`complexSearch?query=${selectedCategory}`).then((data) =>
+      setRecipes(data.results)
     );
   }, [selectedCategory]);
 
@@ -57,7 +57,7 @@ function App() {
             }
           ></Route>
           <Route
-            path=":label"
+            path=":id"
             element={<RecipePage recipes={recipes} />}
           ></Route>
         </Route>
@@ -70,9 +70,9 @@ function App() {
         <Route path="/Calendar" element={<Calendar />}></Route>
         <Route path="/Messages" element={<Messages />}></Route>
         <Route path="/Account" element={<AccountInfo />}></Route>
-        <Route path="/Health" element={<HealthGuides/>}></Route>
+        <Route path="/Health" element={<HealthGuides />}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
-        <Route path="/GroceryList" element={<GroceryList/>}></Route>
+        <Route path="/GroceryList" element={<GroceryList />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

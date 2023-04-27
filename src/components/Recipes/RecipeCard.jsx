@@ -14,7 +14,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 export default function RecipeCard({ recipe }) {
     return (
         <Card sx={{ maxWidth: 345, my: 5, bgcolor: '#404040' }}>
-            <Link to={`/FindRecipes/${recipe.recipe.label}`} style={{ textDecoration: 'none' }}>
+            <Link to={`/FindRecipes/${recipe.id}`} style={{ textDecoration: 'none' }}>
                 <Typography color='white'>
                     <CardHeader
                         avatar={
@@ -22,14 +22,14 @@ export default function RecipeCard({ recipe }) {
                                 <RestaurantIcon />
                             </Avatar>
                         }
-                        title={recipe.recipe.label}
+                        title={recipe.title}
                     />
                 </Typography>
                 <CardMedia
                     component="img"
                     height="250"
-                    image={recipe.recipe.image}
-                    alt={recipe.recipe.label}
+                    image={recipe.image}
+                    alt={recipe.title}
                 />
             </Link>
 

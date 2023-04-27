@@ -17,27 +17,27 @@ let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 const RecipePage = ({ recipes }) => {
-    const { label } = useParams();
 
-    const recipe = recipes.find(recipe => { return (recipe.recipe.label) == label });
+    const { id } = useParams();
+    const recipe = recipes.find(recipe => { return (recipe.id) == id });
 
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="lg">
-                <Typography variant="h1">{recipe.recipe.label}</Typography>
+                <Typography variant="h1">{recipe.title}</Typography>
                 <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={15}>
 
                     <Box>
-                        <img src={recipe.recipe.image} alt={recipe.recipe.label} />
+                        <img src={recipe.image} alt={recipe.title} />
                     </Box>
 
                     <Box>
-                        <Typography variant="h6" paragraph="true" >Source: {recipe.recipe.source} <br />
-                            Calories: {parseInt(recipe.recipe.calories)} <br />
-                            {recipe.recipe.dietLabels}
+                        <Typography variant="h6" paragraph="true" >Source: {recipe.creditsText} <br />
+                            Calories: {parseInt(recipe.nutrition.nutrients[0].amount)} <br />
+
                         </Typography>
 
-                        <Button href={recipe.recipe.url} target="_blank" rel="noreferrer" variant="contained" color="secondary" >Complete Recipe Here</Button>
+                        <Button href={recipe.sourceUrl} target="_blank" rel="noreferrer" variant="contained" color="secondary" >Complete Recipe Here</Button>
                     </Box>
 
                 </Stack>
@@ -46,12 +46,12 @@ const RecipePage = ({ recipes }) => {
                     <Box sx={{ bgcolor: '#404040', p: 5 }}>
                         <Typography variant="h5" color='white'>Ingredients: </Typography>
                         {<List sx={{ width: '100%' }}>
-                            {recipe.recipe.ingredientLines.map((value) => (
+                            {recipe.nutrition.ingredients.map((value) => (
                                 <ListItem
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value}`} />
+                                    <ListItemText primary={`${value.name}: ${(value.amount)} ${value.unit}`} />
                                 </ListItem>
                             ))}
                         </List>}
@@ -60,18 +60,18 @@ const RecipePage = ({ recipes }) => {
                     <Box sx={{ bgcolor: '#404040', p: 5 }}>
                         <Typography variant="h5" color='white'>Nutrients: </Typography>
                         {<List sx={{ width: '100%' }}>
-                            {recipe.recipe.digest.map((value) => (
+                            {recipe.nutrition.nutrients.map((value) => (
                                 <ListItem
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value.label} ${parseInt(value.total)}${value.unit}`} />
+                                    <ListItemText primary={`${value.name}: ${parseInt(value.amount)}${value.unit}`} />
                                 </ListItem>
                             ))}
                         </List>}
                     </Box>
                 </Stack>
-            </Container >
+            </Container>
         </ThemeProvider>
     )
 }
