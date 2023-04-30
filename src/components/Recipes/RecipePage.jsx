@@ -51,7 +51,7 @@ const RecipePage = ({ recipes }) => {
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value.name}: ${(value.amount)} ${value.unit}`} />
+                                    <ListItemText primary={`${(value.amount)} ${value.unit} ${value.name}`} />
                                 </ListItem>
                             ))}
                         </List>}
@@ -65,7 +65,7 @@ const RecipePage = ({ recipes }) => {
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value.name}: ${parseInt(value.amount)}${value.unit}`} />
+                                    <ListItemText primary={`${value.name} ${parseInt(value.amount)}${value.unit}`} />
                                 </ListItem>
                             ))}
                         </List>}

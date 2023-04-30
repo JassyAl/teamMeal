@@ -30,7 +30,7 @@ function App() {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    fetchFromAPI(`complexSearch?query=${selectedCategory}`).then((data) =>
+    fetchFromAPI(`recipes/complexSearch?query=${selectedCategory}`).then((data) =>
       setRecipes(data.results)
     );
   }, [selectedCategory]);

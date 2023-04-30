@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes';
+const BASE_URL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com';
 
 
 const options = {
@@ -13,7 +13,7 @@ const options = {
     },
     headers: {
         'content-type': 'application/octet-stream',
-        'X-RapidAPI-Key': 'c0f12444f6msh83117ab0f39c3aap1209a9jsn0bafd8130fc3',
+        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
         'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
 };
