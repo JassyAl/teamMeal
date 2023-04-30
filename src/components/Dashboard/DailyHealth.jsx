@@ -6,13 +6,11 @@ import {
   AutoStoriesTwoTone,
 } from "@mui/icons-material";
 import "./Dashboard.css";
-
 function DailyHealth() {
   const [currentSite, setCurrentSite] = useState(null);
   const [expiryTime, setExpiryTime] = useState(null);
   const [newItem, setNewItem] = useState("");
   const [groceryList, setGroceryList] = useState([]);
-  const [dailyFood, setDailyFood] = useState("");
 
   const handleNewItemChange = (event) => {
     setNewItem(event.target.value);
@@ -99,13 +97,6 @@ function DailyHealth() {
     }, timeUntilTarget);
     return () => clearInterval(timer);
   }, [expiryTime, timeUntilTarget]);
-
-  // maybe use a filter for daily meal
-  const foodItem = [
-    'chicken', 'fish', 'shrimp', 'vegetarian', 'beef', 'pork', 'pasta'
-  ]
-
-//   console.log(foodItem);
 
   return (
     <div>
