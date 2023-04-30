@@ -4,6 +4,7 @@ const port = 3001;
 
 const journal_model = require('./journal_model');
 const message_model = require('./message_model');
+const recipe_model = require('./recipe_model');
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -45,6 +46,8 @@ app.post('/journals', (req, res) => {
   })
 })*/
 
+
+
 app.get('/messages', (req, res) => {
   message_model.getMessages()
   .then(response => {
@@ -63,6 +66,40 @@ app.post('/messages', (req, res) => {
   })
   .catch(error => {
     console.log(error);
+    res.status(500).send(error);
+  })
+})
+
+
+
+app.get('/savedrecipes', (req, res) => {
+  recipe_model.getRecipes()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+    console.log(error);
+  })
+})
+
+app.post('/savedrecipes', (req, res) => {
+  recipe_model.saveRecipe(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).send(error);
+  })
+})
+
+app.delete('/savedrecipes', (req, res) => {
+  recipe_model.deleteRecipe(req.query.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
     res.status(500).send(error);
   })
 })
