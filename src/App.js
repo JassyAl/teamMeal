@@ -10,33 +10,37 @@ import HomePage from "./components/Dashboard/HomePage";
 import Journal from "./components/Journal/Journal";
 import DailyProgress from "./components/Journal/DailyProgress";
 import NoPage from "./components/NoPage";
-import Profile from "./components/Dashboard/Profile";
 import Messages from "./components/Dashboard/Messages";
 import AccountInfo from "./components/Dashboard/AccountInfo";
 import TAC from "./components/SignOn/TAC";
 import Calendar from "./components/Calendar/Calendar";
 import SavedRecipes from "./components/Recipes/SavedRecipes";
 import CustomRecipes from "./components/Recipes/CustomRecipes";
-
+import HealthGuides from "./components/Dashboard/Health";
+import GroceryList from "./components/Recipes/GroceryList";
+import ProfilePage from "./components/Dashboard/Profile";
 import { fetchFromAPI } from "./API/fetchFromAPI";
 import { useState, useEffect } from "react";
+import DailyHealth from "./components/Dashboard/DailyHealth";
+
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("chicken");
   const [recipes, setRecipes] = useState([]);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setRecipes(data.hits)
+    fetchFromAPI(`complexSearch?query=${selectedCategory}`).then((data) =>
+      setRecipes(data.results)
     );
   }, [selectedCategory]);
 
   const location = useLocation();
   // render the navbar on all routes except the landing page
-  const showNavBar = location.pathname !== "/";
+  const showNavBar = location.pathname !== "/" && location.pathname !== "/DailyHealth";
   return (
     <div className="App">
-      {showNavBar && <NavBar />}
+      {showNavBar && <NavBar image={image} setImage={setImage} />}
       <Routes>
         <Route path="/" element={<Landing />}></Route>
         <Route path="/SignIn" element={<SignIn />}></Route>
@@ -54,7 +58,7 @@ function App() {
             }
           ></Route>
           <Route
-            path=":label"
+            path=":id"
             element={<RecipePage recipes={recipes} />}
           ></Route>
         </Route>
@@ -63,11 +67,14 @@ function App() {
         <Route path="/HomePage" element={<HomePage />}></Route>
         <Route path="/Journal" element={<Journal />}></Route>
         <Route path="/DailyProgress" element={<DailyProgress />}></Route>
-        <Route path="/Profile" element={<Profile />}></Route>
+        <Route path="/Profile" element={<ProfilePage image={image} setImage={setImage} />}></Route>
         <Route path="/Calendar" element={<Calendar />}></Route>
         <Route path="/Messages" element={<Messages />}></Route>
         <Route path="/Account" element={<AccountInfo />}></Route>
+        <Route path="/Health" element={<HealthGuides />}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
+        <Route path="/GroceryList" element={<GroceryList />}></Route>
+        <Route path="/DailyHealth" element={<DailyHealth />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

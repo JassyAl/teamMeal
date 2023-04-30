@@ -5,11 +5,6 @@ import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import DailyProgress from "../Journal/DailyProgress";
-import Journal from "../Journal/Journal";
-import Messages from "./Messages";
-import Calendar from "../Calendar/Calendar";
-import SavedRecipes from "../Recipes/SavedRecipes";
 
 function HomePage() {
   const userName = "Healthy Jack";
@@ -34,22 +29,34 @@ function HomePage() {
 
   return (
     <div>
-      <div>
-        <Typography
-          style={{
-            color: "white",
-            textAlign: "left",
-            padding: 40,
-            fontWeight: "bolder",
+      <Typography
+        style={{
+          color: "white",
+          textAlign: "left",
+          padding: 40,
+          fontWeight: "bolder",
+        }}
+        className="userName"
+        variant="h4"
+      >
+        Hello, <br />
+        {userName}
+      </Typography>
+
+      <Grid container spacing={3} style={{ paddingLeft: 40, paddingRight: 30 }}>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2px",
           }}
-          className="userName"
-          variant="h4"
         >
-          Hello, <br />
-          {userName}
-        </Typography>
-        <div className="overview">
           <Button
+            className="overview"
             variant="contained"
             disabled
             color="primary"
@@ -57,245 +64,284 @@ function HomePage() {
               backgroundColor: "royalblue",
               color: "white",
               borderRadius: 30,
-              width: 200,
+              width: 400
             }}
           >
             Overview
           </Button>
-        </div>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{ display: "flex", marginBottom: "2px" }}
+        >
+          <Button
+            className="health"
+            variant="text"
+            color="primary"
+            href="Health"
+            style={{
+              backgroundColor: "#333333",
+              color: "white",
+              borderRadius: 30,
+              width: 400
+            }}
+          >
+            Health Guides
+          </Button>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={4}
+          sx={{ display: "flex", marginBottom: "2px" }}
+        >
+          <Button
+            className="grocery"
+            variant="text"
+            color="primary"
+            href="GroceryList"
+            style={{
+              backgroundColor: "purple",
+              color: "white",
+              borderRadius: 30,
+              width: 400
+            }}
+          >
+            Grocery List
+          </Button>
+        </Grid>
+      </Grid>
 
-        <Grid container spacing={2}>
-          <Grid style={{ padding: 20 }} item xs={12} md={16} lg={32}>
-            <Button
-              fullWidth
-              component="a"
-              href="DailyProgress"
-              startdecorator={<DailyProgress />}
+      <Grid>
+        <Grid
+          style={{ padding: "20px 30px 10px 10px" }}
+          item
+          xs={12}
+          md={12}
+          lg={12}
+        >
+          <Button
+            fullWidth
+            href="DailyProgress"
+            style={{
+              paddingLeft: 20,
+              paddingRight: 15,
+            }}
+          >
+            <Card
               style={{
-                padding: "10px",
+                padding: "20px",
+                background: "#333333",
                 color: "white",
                 textAlign: "left",
-                maxHeight: "80vh",
                 width: "100%",
+                border: "2px solid lightgreen",
+                boxSizing: "border-box",
               }}
             >
-              <Card
-                style={{
-                  padding: "20px",
-                  background: "#333333",
-                  color: "white",
-                  textAlign: "left",
-                  width: "100%",
-                  border: "2px solid lightgreen",
-                  boxSizing: "border-box",
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h5">Daily Progress</Typography>
+              <CardContent>
+                <Typography variant="h5">Daily Progress</Typography>
 
-                  <Typography
-                    variant="subtitle2"
-                    style={{ color: "lightgray", textAlign: "left" }}
-                  >
-                    Here you can see your daily tasks
-                  </Typography>
-                  <br />
-                  <div className="break" />
+                <Typography
+                  variant="subtitle2"
+                  style={{ color: "lightgray", textAlign: "left" }}
+                >
+                  Here you can see your daily tasks
+                </Typography>
+                <br />
+                <div className="break" />
+                <Typography
+                  variant="h6"
+                  style={{ alignItems: "left", paddingBottom: 10 }}
+                >
+                  {`${progress}%`}
+                </Typography>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ ...barStyle, backgroundColor: "gold" }}></div>
+                </div>
+              </CardContent>
+            </Card>
+          </Button>
+        </Grid>
+      </Grid>
+
+      <Typography
+        style={{
+          color: "white",
+          textAlign: "left",
+          paddingLeft: 40,
+          fontWeight: "bolder",
+        }}
+        className="userName"
+        variant="h4"
+      >
+        Categories
+      </Typography>
+
+      <Grid container spacing={3} style={{ padding: 30 }}>
+        <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
+          <Button href="Journal">
+            <Card style={paperStyle}>
+              <CardContent>
+                <AutoStoriesIcon
+                  fontSize="large"
+                  style={{ color: "royalblue" }}
+                />
+                <br />
+                <Typography
+                  variant="subtitle2"
+                  style={{ color: "lightgray", textAlign: "left" }}
+                >
+                  {currEntries} Entries
+                </Typography>
+                <Typography variant="h5">Journal</Typography>
+                <div className="break" />{" "}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{ ...barStyle, backgroundColor: "royalblue" }}
+                  ></div>
                   <Typography
                     variant="h6"
-                    style={{ alignItems: "left", paddingBottom: 10 }}
+                    style={{
+                      fontWeight: "bolder",
+                      textAlign: "center",
+                      width: 70,
+                      marginLeft: 60,
+                      backgroundColor: "royalblue",
+                      borderRadius: 30,
+                    }}
                   >
                     {`${progress}%`}
                   </Typography>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div style={{ ...barStyle, backgroundColor: "gold" }}></div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Button>
-          </Grid>
+                </div>
+              </CardContent>
+            </Card>
+          </Button>
         </Grid>
-        <Typography
-          style={{
-            color: "white",
-            textAlign: "left",
-            paddingLeft: 30,
-            paddingBottom: 20,
-            paddingTop: 30,
-            fontWeight: "bolder",
-          }}
-          className="userName"
-          variant="h4"
-        >
-          Categories
-        </Typography>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={6}>
-            <Button component="a" href="Journal" startdecorator={<Journal />}>
-              <Card style={paperStyle}>
-                <CardContent>
-                  <AutoStoriesIcon
-                    fontSize="large"
-                    style={{ color: "royalblue" }}
-                  />
-                  <br />
+        <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
+          <Button href="Messages">
+            <Card style={paperStyle}>
+              <CardContent>
+                <CircleNotificationsIcon
+                  fontSize="large"
+                  style={{ color: "orange" }}
+                />
+                <br />
+                <Typography
+                  variant="subtitle2"
+                  style={{ color: "lightgray", textAlign: "left" }}
+                >
+                  {notifications} New
+                </Typography>
+                <Typography variant="h5">Notifications</Typography>
+                <div className="break" />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ ...barStyle, backgroundColor: "orange" }}></div>
                   <Typography
-                    variant="subtitle2"
-                    style={{ color: "lightgray", textAlign: "left" }}
+                    variant="h6"
+                    style={{
+                      fontWeight: "bolder",
+                      textAlign: "center",
+                      width: 70,
+                      marginLeft: 60,
+                      backgroundColor: "orange",
+                      borderRadius: 30,
+                    }}
                   >
-                    {currEntries} Entries
+                    {`${progress}%`}
                   </Typography>
-                  <Typography variant="h5">Journal</Typography>
-                  <div className="break" />{" "}
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div
-                      style={{ ...barStyle, backgroundColor: "royalblue" }}
-                    ></div>
-                    <Typography
-                      variant="h6"
-                      style={{
-                        fontWeight: "bolder",
-                        textAlign: "center",
-                        width: 70,
-                        marginLeft: 60,
-                        backgroundColor: "royalblue",
-                        borderRadius: 30,
-                      }}
-                    >
-                      {`${progress}%`}
-                    </Typography>
-                  </div>
-                </CardContent>
-              </Card>
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <Button component="a" href="Messages" startdecorator={<Messages />}>
-              <Card style={paperStyle}>
-                <CardContent>
-                  <CircleNotificationsIcon
-                    fontSize="large"
-                    style={{ color: "orange" }}
-                  />
-                  <br />
-                  <Typography
-                    variant="subtitle2"
-                    style={{ color: "lightgray", textAlign: "left" }}
-                  >
-                    {notifications} New
-                  </Typography>
-                  <Typography variant="h5">Notifications</Typography>
-                  <div className="break" />
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div
-                      style={{ ...barStyle, backgroundColor: "orange" }}
-                    ></div>
-                    <Typography
-                      variant="h6"
-                      style={{
-                        fontWeight: "bolder",
-                        textAlign: "center",
-                        width: 70,
-                        marginLeft: 60,
-                        backgroundColor: "orange",
-                        borderRadius: 30,
-                      }}
-                    >
-                      {`${progress}%`}
-                    </Typography>
-                  </div>
-                </CardContent>
-              </Card>
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <Button
-              component="a"
-              href="SavedRecipes"
-              startdecorator={<SavedRecipes />}
-            >
-              <Card style={paperStyle}>
-                <CardContent>
-                  <RestaurantMenuIcon
-                    fontSize="large"
-                    style={{ color: "rgb(196, 19, 196)" }}
-                  />
-                  <br />
-                  <Typography
-                    variant="subtitle2"
-                    style={{ color: "lightgray", textAlign: "left" }}
-                  >
-                    {savedMeals} Saved Meals
-                  </Typography>
-                  <Typography variant="h5">My Favorite Recipes</Typography>
-                  <div className="break" />
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div
-                      style={{
-                        ...barStyle,
-                        backgroundColor: "rgb(196, 19, 196)",
-                      }}
-                    ></div>
-                    <Typography
-                      variant="h6"
-                      style={{
-                        fontWeight: "bolder",
-                        textAlign: "center",
-                        width: 70,
-                        marginLeft: 60,
-                        backgroundColor: "rgb(196, 19, 196)",
-                        borderRadius: 30,
-                      }}
-                    >
-                      {`${progress}%`}
-                    </Typography>
-                  </div>
-                </CardContent>
-              </Card>
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <Button component="a" href="Calendar" startdecorator={<Calendar />}>
-              <Card style={paperStyle}>
-                <CardContent>
-                  <CalendarMonthIcon
-                    fontSize="large"
-                    style={{ color: "green" }}
-                  />
-                  <br />
-                  <Typography
-                    variant="subtitle2"
-                    style={{ color: "lightgray", textAlign: "left" }}
-                  >
-                    {newTasks} New Tasks
-                  </Typography>
-                  <Typography variant="h5">My Calendar</Typography>
-                  <div className="break" />
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div
-                      style={{ ...barStyle, backgroundColor: "green" }}
-                    ></div>
-                    <Typography
-                      variant="h6"
-                      style={{
-                        fontWeight: "bolder",
-                        textAlign: "center",
-                        width: 70,
-                        marginLeft: 60,
-                        backgroundColor: "green",
-                        borderRadius: 30,
-                      }}
-                    >
-                      {`${progress}%`}
-                    </Typography>
-                  </div>
-                </CardContent>
-              </Card>
-            </Button>
-          </Grid>
+                </div>
+              </CardContent>
+            </Card>
+          </Button>
         </Grid>
-      </div>
+
+        <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
+          <Button href="SavedRecipes">
+            <Card style={paperStyle}>
+              <CardContent>
+                <RestaurantMenuIcon
+                  fontSize="large"
+                  style={{ color: "rgb(196, 19, 196)" }}
+                />
+                <br />
+                <Typography
+                  variant="subtitle2"
+                  style={{ color: "lightgray", textAlign: "left" }}
+                >
+                  {savedMeals} Saved Meals
+                </Typography>
+                <Typography variant="h5">Favorite Recipes</Typography>
+                <div className="break" />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{
+                      ...barStyle,
+                      backgroundColor: "rgb(196, 19, 196)",
+                    }}
+                  ></div>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      fontWeight: "bolder",
+                      textAlign: "center",
+                      width: 70,
+                      marginLeft: 60,
+                      backgroundColor: "rgb(196, 19, 196)",
+                      borderRadius: 30,
+                    }}
+                  >
+                    {`${progress}%`}
+                  </Typography>
+                </div>
+              </CardContent>
+            </Card>
+          </Button>
+        </Grid>
+
+        <Grid container spacing={1} item xs={12} sm={6} md={6} lg={6}>
+          <Button href="Calendar">
+            <Card style={paperStyle}>
+              <CardContent>
+                <CalendarMonthIcon
+                  fontSize="large"
+                  style={{ color: "green" }}
+                />
+                <br />
+                <Typography
+                  variant="subtitle2"
+                  style={{ color: "lightgray", textAlign: "left" }}
+                >
+                  {newTasks} New Tasks
+                </Typography>
+                <Typography variant="h5">My Calendar</Typography>
+                <div className="break" />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ ...barStyle, backgroundColor: "green" }}></div>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      fontWeight: "bolder",
+                      textAlign: "center",
+                      width: 70,
+                      marginLeft: 60,
+                      backgroundColor: "green",
+                      borderRadius: 30,
+                    }}
+                  >
+                    {`${progress}%`}
+                  </Typography>
+                </div>
+              </CardContent>
+            </Card>
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }

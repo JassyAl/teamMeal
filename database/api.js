@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3001;
 
-const journal_model = require('./journal_entry_model');
+const journal_model = require('./journal_model');
+const message_model = require('./message_model');
+const recipe_model = require('./recipe_model');
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -43,6 +45,64 @@ app.post('/journals', (req, res) => {
     res.status(500).send(error);
   })
 })*/
+
+
+
+app.get('/messages', (req, res) => {
+  message_model.getMessages()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+    console.log(error);
+  })
+})
+
+app.post('/messages', (req, res) => {
+  message_model.createMessage(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).send(error);
+  })
+})
+
+
+
+app.get('/savedrecipes', (req, res) => {
+  recipe_model.getRecipes()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+    console.log(error);
+  })
+})
+
+app.post('/savedrecipes', (req, res) => {
+  recipe_model.saveRecipe(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).send(error);
+  })
+})
+
+app.delete('/savedrecipes', (req, res) => {
+  recipe_model.deleteRecipe(req.query.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
