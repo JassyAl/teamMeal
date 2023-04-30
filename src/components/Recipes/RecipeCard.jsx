@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,6 +12,13 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 
 export default function RecipeCard({ recipe }) {
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const handleFavoriteClick = () => {
+        setIsFavorite(!isFavorite);
+    }
+
     return (
         <Card sx={{ maxWidth: 345, my: 5, bgcolor: '#404040' }}>
             <Link to={`/FindRecipes/${recipe.id}`} style={{ textDecoration: 'none' }}>
@@ -34,8 +41,8 @@ export default function RecipeCard({ recipe }) {
             </Link>
 
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon color='secondary' fontSize='large' />
+                <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
+                    <FavoriteIcon color={isFavorite ? 'success' : 'secondary'} fontSize='large' />
                 </IconButton>
             </CardActions>
         </Card>

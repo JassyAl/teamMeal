@@ -1,7 +1,10 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useState } from "react";
+import { Button, Stack } from "@mui/material";
+import RecipeCard from "./RecipeCard";
 
 function SavedRecipes() {
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+
   return (
     <div>
       <h1>Saved Recipes</h1>
@@ -20,6 +23,12 @@ function SavedRecipes() {
           Add New Recipe
         </Button>
       </div>
+
+      <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={4}>
+        {favoriteRecipes.map((item, id) => (
+          <RecipeCard key={id} recipe={item} />
+        ))}
+      </Stack>
     </div>
   );
 }
