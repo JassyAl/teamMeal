@@ -4,6 +4,7 @@ import RecipeCard from "./RecipeCard";
 
 
 const DefaultRecipes = ({ recipes }) => {
+
     return (
         <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={4}>
             {recipes.map((item, id) => (
