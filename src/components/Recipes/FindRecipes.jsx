@@ -3,10 +3,13 @@ import SearchBar from './SearchBar';
 import DefaultRecipes from "./DefaultRecipes";
 
 
-function Recipes({ recipes, selectedCategory, setSelectedCategory, allergen, setAllergen }) {
+
+
+
+function Recipes({ recipes, selectedCategory, setSelectedCategory }) {
   return (
     <div>
-      <SearchBar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} allergen={allergen} setAllergen={setAllergen} />
+      <SearchBar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <DefaultRecipes recipes={recipes} />
     </div>
   );

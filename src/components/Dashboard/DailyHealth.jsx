@@ -6,10 +6,7 @@ import {
   AutoStoriesTwoTone,
 } from "@mui/icons-material";
 import "./Dashboard.css";
-import { Stack, Box, Typography } from '@mui/material';
-import RecipeCard from "../Recipes/RecipeCard";
-
-function DailyHealth({ randomRecipes }) {
+function DailyHealth() {
   const [currentSite, setCurrentSite] = useState(null);
   const [expiryTime, setExpiryTime] = useState(null);
   const [newItem, setNewItem] = useState("");
@@ -218,38 +215,6 @@ function DailyHealth({ randomRecipes }) {
             </Button>
           </Card>
         </Grid>
-
-
-        <Grid item xs={12} md={12} lg={12}>
-          <br />
-          <br />
-          <Card
-            style={{
-              backgroundColor: "#1a1a1a",
-              marginTop: "20px",
-              textAlign: "center"
-
-            }}>
-            <Typography variant="h4" color='white' >Daily Recipes</Typography>
-            <Button
-              variant="text"
-              href="FindRecipes"
-              size="large"
-              style={{ color: '#9500ae', fontSize: 20 }}
-            >
-              Find Recipes Here
-            </Button>
-            <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={4}>
-              {randomRecipes.map((item, id) => (
-                <Box key={id}>
-                  {item.id && <RecipeCard recipe={item} />}
-                </Box>
-              ))}
-            </Stack>
-          </Card>
-        </Grid>
-
-
       </Grid>
     </div>
   );
