@@ -25,15 +25,34 @@ import DailyHealth from "./components/Dashboard/DailyHealth";
 
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("chicken");
+  const [selectedCategory, setSelectedCategory] = useState("pasta");
   const [recipes, setRecipes] = useState([]);
   const [image, setImage] = useState("");
+  const [allergen, setAllergen] = useState([]);
+
 
   useEffect(() => {
-    fetchFromAPI(`recipes/complexSearch?query=${selectedCategory}`).then((data) =>
+    fetchFromAPI(`recipes/complexSearch?query=${selectedCategory}`,
+      {
+        //method: 'GET',
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        params: {
+          number: '2',
+          addRecipeNutrition: 'true',
+          intolerances: allergen.join()
+          //addRecipeInformation: 'true'
+        },
+        headers: {
+          'content-type': 'application/octet-stream',
+          'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+      }
+    ).then((data) =>
       setRecipes(data.results)
     );
-  }, [selectedCategory]);
+  }, [selectedCategory, allergen]);
+
 
   const location = useLocation();
   // render the navbar on all routes except the landing page
@@ -54,6 +73,8 @@ function App() {
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
                 recipes={recipes}
+                allergen={allergen}
+                setAllergen={setAllergen}
               />
             }
           ></Route>

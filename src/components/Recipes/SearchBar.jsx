@@ -4,9 +4,10 @@ import { Search } from '@mui/icons-material';
 import './recipes.css';
 import { Typography } from '@mui/material';
 import { Stack } from '@mui/material';
+import Allergies from "./Allergies";
 
 
-const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
+const SearchBar = ({ selectedCategory, setSelectedCategory, allergen, setAllergen }) => {
 
     const onhandleSubmit = (e) => {
         e.preventDefault();
@@ -27,13 +28,20 @@ const SearchBar = ({ selectedCategory, setSelectedCategory }) => {
 
             <Stack direction="row" justifyContent="center">
                 <input
+                    type="text"
                     className="search-bar"
-                    placeholder="Find Recipes..."
+                    placeholder={selectedCategory}
                     value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)} />
-                <IconButton type="submit" sx={{ p: '10px', color: '#595959' }}>
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                />
+                <IconButton
+                    type="submit"
+                    sx={{ p: '10px', color: '#595959' }}
+                >
                     <Search />
                 </IconButton>
+                <Allergies allergen={allergen} setAllergen={setAllergen} />
+
             </Stack>
 
         </Paper>
