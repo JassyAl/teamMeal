@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { TextField, Input, Button } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import axios from "axios";
+import "./recipes.css";
 
 const useStyles = makeStyles({
   TextFieldStyle: {
@@ -15,20 +16,17 @@ const useStyles = makeStyles({
       color: "white",
     },
   },
-  InputImageStyle: {
-    color: "white",
-  },
 });
 
 function CustomRecipes() {
   const classes = useStyles();
-  const [image, setImage] = useState(null);
   const [steps, setSteps] = useState([{ step: "" }]);
   const [ingredients, setIngredients] = useState([
     { ingredient: "", measurement: "" },
   ]);
 
-  const onImageChange = (event) => {
+  const [image, setImage] = useState(null);
+  const displayImage = (event) => {
     setImage(URL.createObjectURL(event.target.files[0]));
   };
 
@@ -53,12 +51,34 @@ function CustomRecipes() {
   };
 
   const submitAction = () => {
+    uploadFile();
     window.alert("Your recipe has been submitted!");
     window.location.reload();
   };
 
+  const [fileData, setFileData] = useState("");
+
+  const getFile = (e) => {
+    setFileData(e.target.files[0]);
+  };
+
+  const uploadFile = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    const data = new FormData();
+    data.append("file", fileData);
+    axios({
+      method: "POST",
+      url: "http://localhost:3000/upload",
+      data: data,
+    }).then((res) => {
+      alert(res.data.message);
+    });
+  };
+
   return (
-    <div>
+    <div id="customrecipe-page-container">
       <h1>Add Custom Recipe</h1>
       {/* Recipe Name */}
       <TextField
@@ -70,20 +90,37 @@ function CustomRecipes() {
 
       {/* Import Photo */}
       <h2>Photo</h2>
-      <Input
+      <Button
+        variant="contained"
+        onClick={() =>
+          document.getElementById("customrecipe-image-upload").click()
+        }
+      >
+        Upload Image
+      </Button>
+      <input
+        id="customrecipe-image-upload"
         type="file"
-        onChange={onImageChange}
-        className={classes.InputImageStyle}
-        disableUnderline={true}
+        name="file"
+        onChange={(event) => {
+          getFile(event);
+          displayImage(event);
+        }}
+        style={{ display: "none" }}
       />
-      {/* Prevents the missing source icon from appearing */}
       <br></br>
-      {image && <img src={image} />}
+      {image && (
+        <img
+          alt=""
+          src={image}
+          style={{ width: "400px", height: "400px", objectFit: "contain" }}
+        />
+      )}
 
       {/* Ingredients with their measurements */}
       <h2>Ingredients</h2>
       {ingredients.map((ingredient, index) => (
-        <div key={index}>
+        <div id="customrecipe-ingredient-container" key={index}>
           <TextField
             label="Ingredient"
             variant="outlined"
@@ -100,7 +137,11 @@ function CustomRecipes() {
             onChange={(event) =>
               handleIngredientChange(event, index, "measurement")
             }
-            style={{ width: "30%", marginLeft: "10px", marginBottom: "15px" }}
+            style={{
+              width: "30%",
+              marginLeft: "10px",
+              marginBottom: "15px",
+            }}
           />
         </div>
       ))}
@@ -119,18 +160,34 @@ function CustomRecipes() {
           multiline={true}
           className={classes.TextFieldStyle}
           onChange={(event) => handleStepChange(event, index)}
-          style={{ width: "91%", marginBottom: "15px" }}
+          style={{ width: "85%", marginBottom: "15px" }}
         />
       ))}
       {/* Button to add more steps */}
       <br></br>
-      <Button variant="contained" onClick={addStep}>
+      <Button
+        variant="contained"
+        onClick={addStep}
+        style={{
+          marginBottom: "30px",
+        }}
+      >
         Add Step
       </Button>
+
+      {/* Other Notes */}
+      <TextField
+        label="Other Notes"
+        variant="outlined"
+        className={classes.TextFieldStyle}
+        style={{ width: "90%" }}
+        multiline={true}
+      />
 
       {/* Button to submit the recipe */}
       <br></br>
       <Button
+        id="customrecipe-submit-button"
         variant="contained"
         onClick={submitAction}
         style={{
