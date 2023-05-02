@@ -25,15 +25,55 @@ import DailyHealth from "./components/Dashboard/DailyHealth";
 
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("chicken");
+  const [selectedCategory, setSelectedCategory] = useState("cajun chicken pasta");
   const [recipes, setRecipes] = useState([]);
   const [image, setImage] = useState("");
+  const [allergen, setAllergen] = useState([]);
+  const [randomRecipes, setRandomRecipes] = useState([]);
 
+  //Find Recipes
   useEffect(() => {
-    fetchFromAPI(`complexSearch?query=${selectedCategory}`).then((data) =>
+    fetchFromAPI(`recipes/complexSearch?query=${selectedCategory}`,
+      {
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        params: {
+          number: '10',
+          addRecipeNutrition: 'true',
+          intolerances: allergen.join(),
+          sort: 'popularity',
+          instructionsRequired: 'true'
+        },
+        headers: {
+          'content-type': 'application/octet-stream',
+          'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+      }
+    ).then((data) =>
       setRecipes(data.results)
     );
-  }, [selectedCategory]);
+  }, [selectedCategory, allergen]);
+
+  //Ramdom Recipes
+  useEffect(() => {
+    fetchFromAPI(`recipes/random`,
+      {
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        params: {
+          number: '3',
+          addRecipeNutrition: 'true'
+        },
+        headers: {
+          'content-type': 'application/octet-stream',
+          'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+      }
+    ).then((data) =>
+      setRandomRecipes(data.recipes)
+    );
+  }, []);
+
 
   const location = useLocation();
   // render the navbar on all routes except the landing page
@@ -54,6 +94,8 @@ function App() {
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
                 recipes={recipes}
+                allergen={allergen}
+                setAllergen={setAllergen}
               />
             }
           ></Route>
@@ -74,7 +116,7 @@ function App() {
         <Route path="/Health" element={<HealthGuides />}></Route>
         <Route path="/Terms" element={<TAC />}></Route>
         <Route path="/GroceryList" element={<GroceryList />}></Route>
-        <Route path="/DailyHealth" element={<DailyHealth />}></Route>
+        <Route path="/DailyHealth" element={<DailyHealth randomRecipes={randomRecipes} />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

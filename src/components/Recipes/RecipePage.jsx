@@ -17,13 +17,12 @@ let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 const RecipePage = ({ recipes }) => {
-
     const { id } = useParams();
     const recipe = recipes.find(recipe => { return (recipe.id) == id });
 
     return (
         <ThemeProvider theme={theme}>
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
                 <Typography variant="h1">{recipe.title}</Typography>
                 <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={15}>
 
@@ -43,7 +42,21 @@ const RecipePage = ({ recipes }) => {
                 </Stack>
 
                 <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ m: 4 }}>
-                    <Box sx={{ bgcolor: '#404040', p: 5 }}>
+                    <Box sx={{ bgcolor: '#404040', p: 5, width: "40%" }}>
+                        <Typography variant="h5" color='white'>Instructions: </Typography>
+                        {<List sx={{ width: '100%' }}>
+                            {recipe.analyzedInstructions[0].steps.map((value) => (
+                                <ListItem
+                                    key={value}
+                                    disableGutters
+                                >
+                                    <ListItemText primary={`Step ${value.number}: ${value.step}`} />
+                                </ListItem>
+                            ))}
+                        </List>}
+                    </Box>
+                    <Divider orientation="vertical" flexItem />
+                    <Box sx={{ bgcolor: '#404040', p: 5, width: "20%" }}>
                         <Typography variant="h5" color='white'>Ingredients: </Typography>
                         {<List sx={{ width: '100%' }}>
                             {recipe.nutrition.ingredients.map((value) => (
@@ -51,13 +64,13 @@ const RecipePage = ({ recipes }) => {
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value.name}: ${(value.amount)} ${value.unit}`} />
+                                    <ListItemText primary={`${(value.amount)} ${value.unit} ${value.name}`} />
                                 </ListItem>
                             ))}
                         </List>}
                     </Box>
                     <Divider orientation="vertical" flexItem />
-                    <Box sx={{ bgcolor: '#404040', p: 5 }}>
+                    <Box sx={{ bgcolor: '#404040', p: 5, width: "20%" }}>
                         <Typography variant="h5" color='white'>Nutrients: </Typography>
                         {<List sx={{ width: '100%' }}>
                             {recipe.nutrition.nutrients.map((value) => (
@@ -65,7 +78,7 @@ const RecipePage = ({ recipes }) => {
                                     key={value}
                                     disableGutters
                                 >
-                                    <ListItemText primary={`${value.name}: ${parseInt(value.amount)}${value.unit}`} />
+                                    <ListItemText primary={`${value.name} ${parseInt(value.amount)}${value.unit}`} />
                                 </ListItem>
                             ))}
                         </List>}
