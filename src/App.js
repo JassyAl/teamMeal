@@ -35,14 +35,13 @@ function App() {
   useEffect(() => {
     fetchFromAPI(`recipes/complexSearch?query=${selectedCategory}`,
       {
-        //method: 'GET',
         url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
         params: {
           number: '10',
           addRecipeNutrition: 'true',
           intolerances: allergen.join(),
-          sort: 'popularity'
-          //addRecipeInformation: 'true'
+          sort: 'popularity',
+          instructionsRequired: 'true'
         },
         headers: {
           'content-type': 'application/octet-stream',
@@ -59,12 +58,10 @@ function App() {
   useEffect(() => {
     fetchFromAPI(`recipes/random`,
       {
-        //method: 'GET',
         url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
         params: {
           number: '3',
           addRecipeNutrition: 'true'
-          //addRecipeInformation: 'true'
         },
         headers: {
           'content-type': 'application/octet-stream',
