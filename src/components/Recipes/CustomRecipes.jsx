@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { TextField, Input, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 
 function CustomRecipes() {
   const classes = useStyles();
+  const [fileData, setFileData] = useState("");
   const [image, setImage] = useState(null);
   const [steps, setSteps] = useState([{ step: "" }]);
   const [ingredients, setIngredients] = useState([
@@ -30,6 +32,7 @@ function CustomRecipes() {
 
   const onImageChange = (event) => {
     setImage(URL.createObjectURL(event.target.files[0]));
+    setFileData(event.target.files[0]);
   };
 
   const addIngredient = () => {
@@ -52,7 +55,19 @@ function CustomRecipes() {
     setSteps(createSteps);
   };
 
-  const submitAction = () => {
+  const submitAction = (e) => {
+    e.preventDefault();   
+    const data = new FormData();
+    data.append("photo", fileData);
+    data.append("steps", JSON.stringify(steps));
+    data.append("ingredients", JSON.stringify(ingredients));
+    axios({
+      method: "POST",
+      url: "http://localhost:3001/customrecipes",
+      data: data,
+    }).then((res) => {       
+        alert(res.data.message);
+    });
     window.alert("Your recipe has been submitted!");
     window.location.reload();
   };
