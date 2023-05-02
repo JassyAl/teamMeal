@@ -37,7 +37,7 @@ function App() {
         //method: 'GET',
         url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
         params: {
-          number: '2',
+          number: '10',
           addRecipeNutrition: 'true',
           intolerances: allergen.join()
           //addRecipeInformation: 'true'
