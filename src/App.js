@@ -60,6 +60,7 @@ function App() {
       {
         url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
         params: {
+          tags: 'keto',
           number: '3',
           addRecipeNutrition: 'true'
         },

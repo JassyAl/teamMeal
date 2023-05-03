@@ -230,7 +230,7 @@ function DailyHealth({ randomRecipes }) {
               textAlign: "center"
 
             }}>
-            <Typography variant="h4" color='white' >Daily Recipes</Typography>
+            <Typography variant="h4" color='white' >Recipe Recommendations</Typography>
             <Button
               variant="text"
               href="FindRecipes"
