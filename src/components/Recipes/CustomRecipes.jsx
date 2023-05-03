@@ -175,17 +175,7 @@ function CustomRecipes() {
         Add Step
       </Button>
 
-      {/* Other Notes */}
-      <TextField
-        label="Other Notes"
-        variant="outlined"
-        className={classes.TextFieldStyle}
-        style={{ width: "90%" }}
-        multiline={true}
-      />
-
       {/* Button to submit the recipe */}
-      <br></br>
       <Button
         id="customrecipe-submit-button"
         variant="contained"
