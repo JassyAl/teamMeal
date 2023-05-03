@@ -79,7 +79,11 @@ function CustomRecipes() {
     <div id="customrecipe-page-container">
       <h1>Add Custom Recipe</h1>
 
-      <form onSubmit={uploadFile} encType="multipart/form-data">
+      <form
+        id="customrecipe-page-container"
+        onSubmit={uploadFile}
+        encType="multipart/form-data"
+      >
         {/* Recipe Name */}
         <TextField
           required
