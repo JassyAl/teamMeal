@@ -51,6 +51,7 @@ function CustomRecipes() {
     setSteps(createSteps);
   };
 
+
   const [fileData, setFileData] = useState("");
 
   const getFile = (e) => {
@@ -82,6 +83,7 @@ function CustomRecipes() {
       <form onSubmit={uploadFile} encType="multipart/form-data">
         {/* Recipe Name */}
         <TextField
+          required
           label="Recipe Name"
           variant="outlined"
           className={classes.TextFieldStyle}
@@ -123,6 +125,7 @@ function CustomRecipes() {
         {ingredients.map((ingredient, index) => (
           <div id="customrecipe-ingredient-container" key={index}>
             <TextField
+              required
               label="Ingredient"
               variant="outlined"
               className={classes.TextFieldStyle}
@@ -132,6 +135,7 @@ function CustomRecipes() {
               style={{ width: "60%" }}
             />
             <TextField
+              required
               label="Measurement"
               variant="outlined"
               className={classes.TextFieldStyle}
@@ -155,6 +159,7 @@ function CustomRecipes() {
         <h2>Steps</h2>
         {steps.map((step, index) => (
           <TextField
+            required
             key={index}
             label={`Step ${index + 1}`}
             variant="outlined"
@@ -176,8 +181,18 @@ function CustomRecipes() {
           Add Step
         </Button>
 
+        {/* Other Notes */}
+        <TextField
+          label="Other Notes"
+          variant="outlined"
+          className={classes.TextFieldStyle}
+          style={{ width: "90%" }}
+          multiline={true}
+        />
+
         {/* Button to submit the recipe */}
-        <Button
+        <br></br>
+        <input
           type="submit"
           id="customrecipe-submit-button"
           variant="contained"
@@ -188,9 +203,8 @@ function CustomRecipes() {
             fontSize: "16px",
             width: "40%",
           }}
-        >
-          Submit Recipe
-        </Button>
+          value="Submit Recipe"
+        />
       </form>
     </div>
   );
