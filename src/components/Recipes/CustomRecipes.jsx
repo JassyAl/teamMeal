@@ -24,7 +24,6 @@ function CustomRecipes() {
   const [ingredients, setIngredients] = useState([
     { ingredient: "", measurement: "" },
   ]);
-  const [notes, setNotes] = useState("");
 
   const [image, setImage] = useState(null);
   const displayImage = (event) => {
