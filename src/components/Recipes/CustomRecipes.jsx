@@ -181,30 +181,22 @@ function CustomRecipes() {
           Add Step
         </Button>
 
-        {/* Other Notes */}
-        <TextField
-          label="Other Notes"
-          variant="outlined"
-          className={classes.TextFieldStyle}
-          style={{ width: "90%" }}
-          multiline={true}
-        />
-
         {/* Button to submit the recipe */}
-        <br></br>
-        <input
+        <Button
           type="submit"
           id="customrecipe-submit-button"
           variant="contained"
           style={{
+            display: "block",
             marginTop: "30px",
             marginBottom: "30px",
             backgroundColor: "lightgreen",
             fontSize: "16px",
             width: "40%",
           }}
-          value="Submit Recipe"
-        />
+        >
+          Submit Recipe
+        </Button>
       </form>
     </div>
   );
