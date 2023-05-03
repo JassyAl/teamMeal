@@ -141,19 +141,19 @@ app.post('/customrecipes', upload.single("file"), async (req, res) => {
       console.log(req.file)
       res.send({
         status: true,
-        message: "File Uploaded!",
+        message: "Image uploaded!",
       });
     } else {
-      res.status(400).send({
+      res.send({
         status: false,
-        data: "File Not Found",
+        data: "file not found, linking to default image",
       });
     }
   } catch (err) {
     res.status(500).send(err);
   }
   
-  custom_recipe_model.createRecipe(req.body, req.file.filename)
+  custom_recipe_model.createRecipe(req.body, req.file ? req.file.filename : "default.png")
   .then(response => {
     res.status(200).send(response);
   })
