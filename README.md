@@ -1,4 +1,5 @@
 Demo 1: Each team member contributed equally.
+
 Demo 2: Each team member contributed equally.
 
 API used: https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
@@ -13,6 +14,7 @@ REACT_APP_RAPID_API_KEY='yourAPIkey'
 
 Demo Video 1: https://www.youtube.com/watch?v=Up6xuVko4yA
 
+Demo Video 2: https://youtu.be/s86-6nL7kRE
 
 [DMC_Project Report1_Final.pdf](https://github.com/JassyAl/teamMeal/files/11163862/DMC_Project.Report1_Final.pdf)
 
